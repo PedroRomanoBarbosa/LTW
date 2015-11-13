@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Eventus</title>
+	<meta charset='UTF-8'>
+	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="utils.js"></script>
+</head>
+
+<body>
+	<h1> EVENTUS </h1>
+	<h2> ~* Description of the website *~ </h2>
+	<form id="form" action="" method="post" autocomplete="on">
+		* Username:
+  	<input id="username" type="text" name="username">
+  	<br>
+	  * Password:
+	  <input id="password" type="password" name="password">
+		<br>
+		<input id="submit" type="button" value="Confirm">
+	</form>
+	<!--Scripts-->
+	<script>
+		$("#username, #password").on('change keyup paste',{flag: flag}, validate);
+		$("#submit").click({flag: flag}, submit);
+	</script>
+
+</body>
+
+</html>
