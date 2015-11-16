@@ -9,18 +9,19 @@
   $user = $tmp->fetch();
 
   if(count($user) == 1){
-    echo 'Username does not exist';
+    echo 'Username does not exist!';
     exit;
   /* If the username exists compare with the password */
   }else {
     if($user['password'] == $password){
       session_start();
       $_SESSION['start'] = true;
-      $_SESSION['username'] = $username;
+      $_SESSION['username'] = $user['username'];
+      $_SESSION['id'] = $user['id'];
       echo "login";
       exit;
     }else {
-      echo 'Invalid password';
+      echo 'Invalid password!';
       exit;
     }
   }
