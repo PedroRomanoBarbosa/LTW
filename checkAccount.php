@@ -9,7 +9,7 @@
   $user = $tmp->fetch();
 
   if(count($user) == 1){
-    echo 'Username does not exist!';
+    echo 'invalid username!';
     exit;
   /* If the username exists compare with the password */
   }else {
