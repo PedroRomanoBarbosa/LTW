@@ -1,2 +1,3 @@
-
-<h6> created by PP&#169;</h6>
+<footer>
+	created by: Pedro Romano Barbosa &amp José Pedro Soares joão Pereira
+</footer>

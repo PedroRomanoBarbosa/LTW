@@ -62,7 +62,7 @@ var login = function(){
                                     location.href = "index.php";
                                   }else {
                                     $("#errorBlock").text(data);
-                                    $("#errorBlock").css({opacity: 0, visibility: "visible"}).animate({opacity: 1}, 'fast');
+                                    $("#errorBlock").css({opacity: 0, visibility: "visible"}).animate({opacity: 1}, 500);
                                   }
                                 });
 }
