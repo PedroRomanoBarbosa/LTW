@@ -2,27 +2,37 @@
 * GLOBAL
 */
 var flag = false;
+var open = false;
 
 /**
 * Checks if the field of the username or the password have met the requirements
 */
 var validate = function(){
-    $(".error").remove();
+    $("#usernameReg").next().css({visibility: "hidden"});
+    $("#passwordReg").next().css({visibility: "hidden"});
     flag = true;
     var regex = /^[a-zA-Z0-9-_]+$/;
-    var username = $("#username").val();
-    var password = $("#password").val();
-    if(username.length < 4){
-        $("#username").after('<span class="error"> username must have at least 6 characters! </span>');
+    var username = $("#usernameReg").val();
+    var password = $("#passwordReg").val();
+    if(username.length < 6){
+        $("#usernameReg").next().text('username must have at least 6 characters!');
+        $("#usernameReg").next().css({visibility: "visible"});
         flag = false;
     }
     if(username.search(regex) == -1){
-        $("#username").after('<span class="error"> username must have only alpha-numeric characters! </span>');
+        $("#usernameReg").next().text('username must have only alpha-numeric characters!');
+        $("#usernameReg").next().css({visibility: "visible"});
         flag = false;
     }
     if(password.length < 6){
-        $("#password").after('<span class="error"> password must have at least 6 characters! </span>');
+        $("#passwordReg").next().text('password must have at least 6 characters!');
+        $("#passwordReg").next().css({visibility: "visible"});
         flag = false;
+    }
+    if(flag == true){
+      $('#submit').show("fast");
+    }else {
+      $('#submit').hide("fast");
     }
 }
 
@@ -32,16 +42,18 @@ var validate = function(){
 var submit = function(){
   var error;
   if(flag == true){
-    var username = $("#username").val();
-    var password = $("#password").val();
-    $.post("createAccount.php", { username: username,
-                                  password: password},
+    var username = $("#usernameReg").val();
+    var password = $("#passwordReg").val();
+    var name = $("#nameReg").val();
+    $.post("createAccount.php", { usernameReg: username,
+                                  passwordReg: password,
+                                  nameReg: name},
                                   function(data) {
                                     if(data == "valid"){
                                       location.href = "index.php";
                                     }else {
-                                      $("#errorBlock").text(data);
-                                      $("#errorBlock").css("visibility","visible");
+                                      $("#usernameReg").next().text(data);
+                                      $("#usernameReg").next().css("visibility","visible");
                                     }
                                   });
   }
@@ -56,9 +68,7 @@ var login = function(){
   $.post("checkAccount.php", { username: username,
                                 password: password},
                                 function(data) {
-                                  if(data == "validated"){
-                                    location.href = "index.php";
-                                  }else if (data == "login") {
+                                  if (data == "login") {
                                     location.href = "index.php";
                                   }else {
                                     $("#errorBlock").text(data);
@@ -78,9 +88,30 @@ var hideError = function(){
 * Logs out from the current session
 */
 var logout = function(){
+  console.log("llef");
   $.post("logout.php", function(data) {
                           if(data == "logout"){
                             location.href = "index.php";
                           }
                         });
+}
+
+var openRegist = function(){
+  $('#registerFormArea').show(400);
+  $('body').animate({
+    scrollTop: $('#registerArea').offset().top - $('body').offset().top + $('#registerArea').scrollTop()
+  });
+}
+
+/**
+* Opens profile menu
+*/
+var openMenu = function(){
+  if(flag){
+    $("#profileTabMenu").hide("slow");
+    flag = false;
+  }else{
+    $("#profileTabMenu").show("fast");
+    flag = true;
+  }
 }

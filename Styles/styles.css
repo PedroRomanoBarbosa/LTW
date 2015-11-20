@@ -1,0 +1,394 @@
+
+/*------ERROR BLOCKS--------*/
+
+#errorBlock{
+  visibility: hidden;
+  position: absolute;
+  padding: 0.5rem;
+  top: 4.5rem;
+  color: red;
+  border: 2px solid red;
+  width: 15rem;
+  right: 10rem;
+  background-color: rgb(254,200,200);
+  border-radius: 5px;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+#registerError{
+  visibility: hidden;
+  padding: 0.5rem;
+  color: red;
+  border: 2px solid red;
+  width: 25rem;
+  margin: auto;
+  margin-bottom: 2rem;
+  background-color: rgb(254,200,200);
+  border-radius: 5px;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+
+/*------MAIN TAGS--------*/
+
+*{
+  margin: 0;
+}
+
+body{
+  min-width: 70rem;
+  background-color: white;
+}
+
+a{
+  text-decoration: none;
+  color: white;
+}
+
+footer{
+  width: 100%;
+  min-width: 80rem;
+  background-color: rgb(23,160,134);
+  padding-top: 5rem;
+  padding-bottom: 7rem;
+  text-align: center;
+  font-family: sans-serif;
+}
+
+#feupLogo{
+  width: 20rem;
+  padding-bottom: 1rem;
+}
+
+
+/*------NAVIGATION STYLES--------*/
+
+#title{
+  font-size: 200%;
+  font-family: sans-serif;
+  font-weight: bold;
+  letter-spacing: 0.5rem;
+  color: white;
+  padding-left: 3rem;
+  padding-top: 1rem;
+}
+
+#nav{
+  background-color: rgb(25,189,155);
+  width: 100%;
+  min-width: 60rem;
+  top: 0;
+  position: fixed;
+  z-index: 1;
+  -webkit-box-shadow: 0px 10px 67px -5px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 10px 67px -5px rgba(0,0,0,0.75);
+  box-shadow: 0px 10px 67px -5px rgba(0,0,0,0.75);
+}
+
+#nav > * {
+  display: inline-block;
+}
+
+#loginForm * {
+  display: inline-block;
+}
+
+#loginBlock{
+  padding-right: 3rem;
+  float: right;
+
+}
+
+#profileIcon{
+  width: 2rem;
+}
+
+.label1{
+  margin-left: 1rem;
+  font-size: 120%;
+}
+
+.navItem{
+  color: white;
+  font-family: sans-serif;
+}
+
+
+
+
+
+/*------PROMOTION AREA STYLES--------*/
+
+#space{
+  height: 10rem;
+}
+
+#promoArea{
+  min-width: 80rem;
+  width: 100%;
+  text-align: center;
+  background-image: url("../images/cover.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 65rem;
+}
+
+#promoInfo{
+  width: inherit;
+  background-color: rgba(0,0,0,0.3);
+  height: 65rem;
+  margin: auto;
+  min-width: 80rem;
+}
+
+#promoTitle{
+  text-shadow: 0px 1px 50px gray;
+  color: white;
+  font-weight: bold;
+  padding: 5rem 0 1rem 0;
+  font-size: 500%;
+  font-family: sans-serif;
+}
+
+#promoSubTitle{
+  color: white;
+  font-size: 250%;
+  font-family: serif;
+}
+
+#promoText{
+  text-shadow: 0px 1px 30px black;
+  color: white;
+  padding: 50rem 0 2rem 0;
+  margin: auto;
+  width: 50rem;
+  font-size: 180%;
+  font-family: sans-serif;
+}
+
+#reg{
+  color: rgb(25,189,155);
+  border-color: rgb(25,189,155);
+  background-color: rgba(0,0,0,0);
+  width: auto;
+  margin-top: 30rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  font-size: 400%;
+  border: 4px solid;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  font-family: sans-serif;
+}
+
+#reg:hover{
+  background-color: rgba(255,255,255,0.1);
+}
+
+#registerArea{
+  min-width: 80rem;
+}
+
+#registerFormArea{
+  display: none;
+  text-align: center;
+  background-color: rgba(50,50,50,0.5);
+  width: 40rem;
+  margin: auto;
+  padding: 1rem;
+  margin-top: 5rem;
+  margin-bottom: 10rem;
+  border-radius: 0.5rem;
+  -webkit-box-shadow: 0px 10px 50px -5px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 10px 50 -5px rgba(0,0,0,0.75);
+  box-shadow: 0px 10px 50 -5px rgba(0,0,0,0.75);
+}
+
+#usernameLabel,#passwordLabel,#nameLabel{
+  font-family: sans-serif;
+  font-size: 200%;
+  color: white;
+}
+
+#usernameReg,#passwordReg,#nameReg{
+  border: 0.3rem solid rgb(23,160,134);
+  border-radius: 1px;
+  width: 20rem;
+  margin-top: 1rem;
+  font-size: 200%;
+}
+
+#usernameReg:focus,#passwordReg:focus,#nameReg:focus{
+  border: 0.3rem solid rgb(198,38,137);
+}
+
+#submit{
+  display: none;
+  margin: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  width: 10rem;
+}
+
+
+
+
+
+
+
+/*-------USER MAIN AREA----------*/
+
+#loginBlock > * {
+  display: inline-block;
+  height: 4rem;
+}
+
+#userNavArea{
+
+}
+
+#userNavArea > *{
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#userNameNav{
+  padding: 1rem;
+  font-family: sans-serif;
+  font-size: 120%;
+  color: white;
+}
+
+#userNameNav:hover{
+  background-color: rgb(23,160,134);
+  cursor: pointer;
+  cursor: hand;
+}
+
+#userNameNav > *{
+  display: inline-block;
+  vertical-align: middle;
+  padding-left: 0.5rem;
+}
+
+#userArea{
+  height: 100rem;
+}
+
+#profileIcon{
+
+}
+
+#profileTabMenu{
+  display: none;
+  padding-top: 1rem;
+  position:absolute;
+  top: 4rem;
+  color: white;
+  width: 16.4rem;
+  max-width: 16.4rem;
+  min-width: 16.4rem;
+  height: auto;
+  font-family: sans-serif;
+  font-weight: bold;
+  color: black;
+  background-color: rgb(150,150,150);
+  text-align: center;
+  right: 5rem;
+  border-radius: 0 0 0.3rem 0.3rem;
+}
+
+#profileTabMenu > ul{
+  padding: 0;
+  list-style: none;
+  border-top: 0.2rem solid rgb(23,160,134);
+}
+
+#profileTabMenu > ul > li{
+  list-style: none;
+  padding-top: 2rem;
+  color: white;
+  font-size: 200%;
+  background-color: rgb(25,189,155);
+  border-bottom: 0.2rem solid rgb(23,160,134);
+}
+
+#profileTabMenu > ul > li:hover{
+  background-color: rgb(23,160,134);
+  cursor: pointer;
+  cursor: hand;
+}
+
+#profileTabMenu > ul:last-child{
+  margin-bottom: 2rem;
+}
+
+#userNameMenuLabel{
+  width: auto;
+  margin-bottom: 1rem;
+  font-weight: normal;
+  font-family: sans-serif;
+  font-size: 120%;
+  color: white;
+}
+
+
+
+
+
+
+
+
+
+
+/*------INPUT TAGS STYLES--------*/
+
+input[type="file"]{
+  color: rgb(23,160,134);
+  width: 10rem;
+}
+
+input[type="button"]{
+  color: rgb(23,160,134);
+  font-family: sans-serif;
+  font-size: 120%;
+  border: 2px solid rgb(23,160,134);
+  background-color: white;
+  text-align: center;
+  width: 6rem;
+  margin-left: 1rem;
+  border-radius: 5px;
+  outline: none;
+}
+
+input[type="button"]:hover{
+  border: 2px solid white;
+  cursor: pointer;
+  cursor: hand;
+  color: white;
+  background-color: rgb(23,160,134);
+}
+
+input[type="text"],input[type="password"]{
+  font-size: 130%;
+  color: gray;
+  width: 8rem;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  border-bottom: solid 5px rgb(23,160,134);
+  transition: border 0.5s;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+input[type="text"]:focus,
+input[type="text"].focus,
+input[type="password"]:focus,
+input[type="password"].focus {
+  border-bottom: 5px solid rgb(198,38,137);
+}
