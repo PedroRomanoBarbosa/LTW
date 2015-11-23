@@ -9,8 +9,9 @@
   $user = $tmp->fetch();
 
   if(count($user) == 1){
-    echo 'invalid username!';
+    echo 'Authentication failed!';
     exit;
+
   /* If the username exists compare with the password */
   }else {
     if($user['password'] == $password){
@@ -21,7 +22,7 @@
       echo "login";
       exit;
     }else {
-      echo 'Invalid password!';
+      echo 'Authentication failed!';
       exit;
     }
   }

@@ -11,6 +11,7 @@
 		<?php if(isset($_SESSION['start'])){
 			echo '$("#logout").click(logout);';
 			echo '$("#userNameNav").click(openMenu);';
+			echo '$("#myEventsLink").click();';
 		}else {
 			echo '$("#login").click(login);';
 			echo '$("#username, #password").on("change keyup paste", hideError);';
