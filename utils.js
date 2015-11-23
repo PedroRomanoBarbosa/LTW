@@ -88,7 +88,6 @@ var hideError = function(){
 * Logs out from the current session
 */
 var logout = function(){
-  console.log("llef");
   $.post("logout.php", function(data) {
                           if(data == "logout"){
                             location.href = "index.php";
@@ -108,10 +107,27 @@ var openRegist = function(){
 */
 var openMenu = function(){
   if(flag){
-    $("#profileTabMenu").hide("slow");
+    $("#profileTabMenu").hide("fast");
     flag = false;
   }else{
     $("#profileTabMenu").show("fast");
     flag = true;
   }
+}
+
+/**
+* Eliminates a joined event from the user
+*/
+var cancelJoinEvent = function(event){
+  var id = $(this).parent().parent().data('id');
+  $.post("cancelJoinEvent.php", { eventId:id },
+                                function(data) {
+                                  if (data == "canceled") {
+                                    location.href = "myEvents.php";
+                                    console.log("worked!");
+                                  }else {
+                                    console.log(data);
+                                    location.href = "index.php";
+                                  }
+                                });
 }
