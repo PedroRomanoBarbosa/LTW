@@ -118,16 +118,7 @@ var openMenu = function(){
 /**
 * Eliminates a joined event from the user
 */
-var cancelJoinEvent = function(event){
-  var id = $(this).parent().parent().data('id');
-  $.post("cancelJoinEvent.php", { eventId:id },
-                                function(data) {
-                                  if (data == "canceled") {
-                                    location.href = "myEvents.php";
-                                    console.log("worked!");
-                                  }else {
-                                    console.log(data);
-                                    location.href = "index.php";
-                                  }
-                                });
+var cancelJoinEvent = function(){
+  var id = $(this).data('id');
+  location.href= 'event.php?eid=' + id;
 }
