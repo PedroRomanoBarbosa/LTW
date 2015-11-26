@@ -1,0 +1,7 @@
+Main{
+  main pink: rgb(198,37,137)
+  sec pink: rgb(100,0,0)
+  main green: rgb(25,189,155)
+  sec green: rgb(23,160,134)
+  background: rgb(233,234,237)
+}

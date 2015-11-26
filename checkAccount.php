@@ -19,6 +19,7 @@
       $_SESSION['start'] = true;
       $_SESSION['username'] = $user['username'];
       $_SESSION['id'] = $user['id'];
+      $_SESSION['imagePath'] = $user['imagePath'];
       echo "login";
       exit;
     }else {
