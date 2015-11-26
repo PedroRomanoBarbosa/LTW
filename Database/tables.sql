@@ -1,5 +1,6 @@
 PRAGMA foreign_keys = ON;
 
+DROP TABLE IF EXISTS comment;
 DROP TABLE IF EXISTS eventUser;
 DROP TABLE IF EXISTS event;
 DROP TABLE IF EXISTS user;
@@ -9,7 +10,8 @@ CREATE TABLE user (
 	id INTEGER PRIMARY KEY,
 	name TEXT,
 	username TEXT,
-	password TEXT
+	password TEXT,
+	imagePath TEXT
 );
 
 CREATE TABLE typeOfEvent(
@@ -36,7 +38,7 @@ CREATE TABLE eventUser (
 
 CREATE TABLE comment (
 	id INTEGER PRIMARY KEY,
-	userId INTEGER REFERENCES user(id),
+	userId INTEGER REFERENCES user(id) ON DELETE CASCADE,
 	eventId INTEGER REFERENCES event(id) ON DELETE CASCADE,
 	content TEXT
 );
@@ -50,8 +52,8 @@ INSERT INTO typeOfEvent (type) VALUES ("Wedding");
 INSERT INTO typeOfEvent (type) VALUES ("Meeting");
 
 /* INSERT USERS */
-INSERT INTO user (name,username,password) VALUES ("Pedro Romano Barbosa","Romanolas","123456");
-INSERT INTO user (name,username,password) VALUES ("João Romano Barbosa","Greentong","123456");
+INSERT INTO user (name,username,password,imagePath) VALUES ("Pedro Romano Barbosa","Romanolas","123456","images/userImages/image1.jpg");
+INSERT INTO user (name,username,password,imagepath) VALUES ("João Romano Barbosa","Greentong","123456","images/userImages/image2.jpg");
 
 
 /* INSERT EVENTS */
@@ -66,6 +68,10 @@ INSERT INTO event (ownerId, name, image, imagePath, dateOfEvent, description, ty
 	"Paredes de Coura", 1, "images/eventImages/image1.jpg", "2015-11-23 12:30", "example description",
 	(SELECT id FROM typeOfEvent WHERE id=2)
 );
+
+
+/* INSERT COMENTS */
+INSERT INTO comment (userId, eventId, content) VALUES (1,1,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vitae vestibulum nibh, eu mattis nunc. Donec ut diam nisl. Maecenas sed dolor vel sapien tristique maximus eu in leo. Mauris molestie eu diam a tempus. Fusce at ex mauris. Donec fermentum augue id elit dignissim gravida non eget eros. Aenean maximus purus sed aliquam rhoncus.");
 
 
 /* INSERT EVENT USER JUNCTION TABLE */

@@ -5,12 +5,13 @@
 		session_start();
 	}
 ?>
+
 	<nav>
 	<div id="title"> <a href="index.php"> EVENTUS </a> </div>
 	<div id="loginBlock">
 		<?php if(isset($_SESSION['start'])){ ?>
 			<div id="userNavArea">
-				<div id="userNameNav"> <img src="images/iconTemplate.png" id="profileIcon" alt="profileIcon"/>
+				<div id="userNameNav"> <img src=<?=$_SESSION["imagePath"]?> id="profileIcon" alt="profileIcon"/>
 				<div id="userNameIcon"> <i class="fa fa-bars"></i> </div> </div>
 				<input id="logout" type="button" value="Log Out">
 			</div>

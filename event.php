@@ -30,43 +30,90 @@ if(!isset($_SESSION['start'])){
     $owner = $tmp->fetch();
 
     /* Run query to find event's participants */
-    $tmp = $db->query('SELECT user.id, user.username FROM user JOIN eventUser WHERE eventUser.userId = user.id AND eventUser.eventId = ?');
+    $tmp = $db->query('SELECT user.id, user.username, user.imagePath FROM user JOIN eventUser WHERE eventUser.userId = user.id AND eventUser.eventId = ?');
     $tmp->execute(array($event["id"]));
     $participants = $tmp->fetchAll();
+
+    /* Run query to find event's comments */
+    $tmp = $db->query('SELECT comment.userId, comment.content, user.username, user.imagePath FROM comment JOIN user WHERE ? = comment.eventId AND user.id = comment.userId');
+    $tmp->execute(array($event["id"]));
+    $comments = $tmp->fetchAll();
     ?>
 
+
+
+  <!-- EVENT AREA -->
   <section id="event-main-area">
+    <?php if($event["image"] == 1){
+        echo '<img id="eventImage" src=' . $event["imagePath"] . '>';
+      }else if($event["image"] == 0){
+        echo '<img id="eventImage" src=images/defaultImage.jpeg>';
+      }
+    ?>
     <header>
-      <?php if($event["image"] == 1){
-          echo '<img id="eventImage" src=' . $event["imagePath"] . '>';
-        }else if($event["image"] == 0){
-          echo '<img id="eventImage" src=images/defaultImage.jpeg>';
-        }
-      ?>
       <h1> <?=$event["name"]?> </h1>
-      <h2> Type: <?=$type["type"]?> </h2>
-      <h4> Created by: <a href=""> <?=$owner["username"]?> </a> <h4>
+      <h2> Date: <?=$event["dateOfEvent"]?> </h2>
+      <h3> Type: <?=$type["type"]?> </h2>
+      <h4> Created by: <a href=<?= 'profile.php?uid=' . $event["ownerId"] ?>> <?=$owner["username"]?> </a> </h4>
     </header>
     <main>
-      <h3>Description: </h3>
-      <p> </p>
-    <main>
-    <aside>
-      <?php foreach ($participants as $user) { ?>
-        <section> <?=$user['username']?> </section>
-      <?php } ?>
-      <section> <?=$user['username']?> </section>
-      <section> <?=$user['username']?> </section>
-      <section> <?=$user['username']?> </section>
-      <section> <?=$user['username']?> </section>
-      <section> <?=$user['username']?> </section>
-      <section> <?=$user['username']?> </section>
-      <section> <?=$user['username']?> </section>
-      <section> <?=$user['username']?> </section>
-      <section> <?=$user['username']?> </section>
-      <section> <?=$user['username']?> </section>
-    </aside>
+      <h3> Description: </h3>
+      <p> <?=$event["description"]?> </p>
+      <div>
+          <div>
+            <h3> <?=count($participants)?> people going </h3>
+            <?php if($event["ownerId"] == $_SESSION["id"]){ ?>
+              <a href=""> Cancel Event </a>
+            <?php }else { ?>
+              <a href=""> Widthraw </a>
+            <?php } ?>
+          </div>
+        <aside>
+          <?php foreach ($participants as $user) { ?>
+            <a href=<?= 'profile.php?uid=' . $user["id"] ?>>
+              <img src=<?=$user["imagePath"] ?>>
+              <h3> <?=$user['username']?> </h3>
+              <div></div>
+            </a>
+          <?php } ?>
+        </aside>
+      </div>
+      <footer>  </footer>
+    </main>
   </section>
+
+  <h1 id="comment-begin"> <i class="fa fa-arrow-down"></i> Comment Section <i class="fa fa-arrow-down"></i> </h1>
+
+  <!-- YOUR COMMENT SECTION -->
+  <section id="your-comment">
+    <header>
+      <img src=<?=$_SESSION["imagePath"] ?>>
+      <h2> <?=$_SESSION['username']?> </h2>
+    </header>
+    <main>
+      <h1> Comment here: </h1>
+      <form action="index.html" method="post">
+        <textarea maxlength="600" rows="4" cols="50"> </textarea>
+        <input type="button" value="Submit">
+      </form>
+      <footer></footer>
+    </main>
+  </section>
+
+
+  <!-- COMMENTS SECTION -->
+    <?= count($comments) ?>
+    <?php foreach ($comments as $comment) { ?>
+      <section id="users-comments-section">
+        <header>
+          <img src=<?=$comment["imagePath"] ?>>
+          <a href=""> <?=$comment['username']?> </a>
+        </header>
+        <main>
+          <textarea readonly="readonly"> <?=$comment['content']?> </textarea>
+        </main>
+      </section>
+    <?php } ?>
 
 	<?php include('footer.php'); ?>
 
