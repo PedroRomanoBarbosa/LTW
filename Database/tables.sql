@@ -65,18 +65,25 @@ INSERT INTO event (ownerId, name, image, imagePath, dateOfEvent, description, ty
 
 INSERT INTO event (ownerId, name, image, imagePath, dateOfEvent, description, type) VALUES (
 	(SELECT id FROM user WHERE id=1),
+	"Jantar de Curso MIEIC", 0, "example.jpg", "2016-01-10 12:30", "Jantar de curso ;)",
+	(SELECT id FROM typeOfEvent WHERE id=1)
+);
+
+INSERT INTO event (ownerId, name, image, imagePath, dateOfEvent, description, type) VALUES (
+	(SELECT id FROM user WHERE id=1),
 	"Paredes de Coura", 1, "images/eventImages/image1.jpg", "2015-11-23 12:30", "example description",
 	(SELECT id FROM typeOfEvent WHERE id=2)
 );
 
 
 /* INSERT COMENTS */
-INSERT INTO comment (userId, eventId, content) VALUES (1,1,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vitae vestibulum nibh, eu mattis nunc. Donec ut diam nisl. Maecenas sed dolor vel sapien tristique maximus eu in leo. Mauris molestie eu diam a tempus. Fusce at ex mauris. Donec fermentum augue id elit dignissim gravida non eget eros. Aenean maximus purus sed aliquam rhoncus.");
+INSERT INTO comment (userId, eventId, content) VALUES (1,1," Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vitae vestibulum nibh, eu mattis nunc. Donec ut diam nisl. Maecenas sed dolor vel sapien tristique maximus eu in leo. Mauris molestie eu diam a tempus. Fusce at ex mauris. Donec fermentum augue id elit dignissim gravida non eget eros. Aenean maximus purus sed aliquam rhoncus.");
+INSERT INTO comment (userId, eventId, content) VALUES (2,1," Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vitae vestibulum nibh, eu mattis nunc. Donec ut diam nisl. Maecenas sed dolor vel sapien tristique maximus eu in leo. Mauris molestie eu diam a tempus. Fusce at ex mauris. Donec fermentum augue id elit dignissim gravida non eget eros. Aenean maximus purus sed aliquam rhoncus.");
 
 
 /* INSERT EVENT USER JUNCTION TABLE */
 INSERT INTO eventUser (userId, eventId) VALUES (1,1);
-INSERT INTO eventUser (userId, eventId) VALUES (1,2);
+INSERT INTO eventUser (userId, eventId) VALUES (1,3);
 INSERT INTO eventUser (userId, eventId) VALUES (2,1);
 
 
