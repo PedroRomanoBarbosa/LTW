@@ -30,12 +30,13 @@ if(!isset($_SESSION['start'])){
     $myEvents = $tmp->fetchAll();
     ?>
 
+    <a id="create-event-button" href="createEvent.php"> <i class="fa fa-plus-circle"></i> CREATE A NEW EVENT </a>
     <div id="content-events">
       <!-- JOINED EVENTS */ -->
       <div id="joined-events-area">
         <div class="events-section-title"> JOINED EVENTS </div>
         <?php foreach($events as $event) {  ?>
-             <div class="events-section-content" data-id="<?=$event[0]?>">
+             <div class="events-section-content" data-index="<?=$joinedIndex?>" data-id="<?=$event[0]?>">
               <?php if($event[4] == 1){
                   echo "<img src='" . $event[5] . "'>";
                 }else if($event[4] == 0){
@@ -52,16 +53,17 @@ if(!isset($_SESSION['start'])){
         <?php } ?>
       </div>
       <!-- USER EVENTS -->
-      <div id="joined-events-area">
+      <div id="created-events-area">
         <div class="events-section-title events-section-title-right"> MY EVENTS </div>
-        <?php foreach($myEvents as $event) { ?>
-            <div class="events-section-content" data-id="<?=$event[0]?>">
+        <?php
+        foreach($myEvents as $event) { ?>
+            <div class="events-section-content" data-index="<?=$createdIndex?>" data-id="<?=$event[0]?>">
               <?php if($event[4] == 1){
                   echo "<img src='" . $event[5] . "'>";
                 }else if($event[4] == 0){
                   echo "<img src='images/defaultImage.jpeg'>";
                 }
-                ?>
+              ?>
               <div class="events-content events-content-right">
                 <div class="events-content-title"> <?=$event[1]?> </div>
                 <div class="events-content-date"> Date: <?=$event[2]?> </div>
@@ -69,7 +71,7 @@ if(!isset($_SESSION['start'])){
                 <a href="cancelEvent.php/?id=<?=$event[0]?>">  <i class="fa fa-times"></i> cancel </a>
               </div>
             </div>
-        <?php } ?>
+      <?php } ?>
       </div>
     <div id="events-button"> <input id="events-more" type="button" value="More"> </div>
     </div>
@@ -77,11 +79,50 @@ if(!isset($_SESSION['start'])){
 	<?php include('footer.php'); ?>
 
   <!--Awesome scripts!-->
+  <?php
+    echo '<script> var joinedEventsLenght =' . count($events) .';
+                   var createdEventsLength =' . count($myEvents) .';</script>';
+  ?>
 	<script>
-			$("#logout").click(logout);
-			$("#userNameNav").click(openMenu);
-      $(".events-section-content").click(cancelJoinEvent);
+  $( document ).ready(function() {
+    var joinedLimit = 3;
+    var createdLimit = 3;
+    $('#joined-events-area > .events-section-content').each(function(index) {
+      if(index < 3){
+        $(this).css("display", "block");
+      }
+    });
+    $('#created-events-area > .events-section-content').each(function(index) {
+      if(index < 3){
+        $(this).css("display", "block");
+      }
+    });
+    if(createdLimit >= createdEventsLength && joinedLimit >= joinedEventsLenght){
+      $("#events-more").css("visibility","hidden");
+    }
+    $("#logout").click(logout);
+    $("#userNameNav").click(openMenu);
+    $(".events-section-content").click(cancelJoinEvent);
+    $("#events-more").click(
+      function(){
+        createdLimit+=3;
+        joinedLimit+=3;
+        if(createdLimit >= createdEventsLength && joinedLimit >= joinedEventsLenght){
+          $("#events-more").css("visibility","hidden");
+        }
+        $('#joined-events-area > .events-section-content').each(function(index) {
+          if(index < joinedLimit){
+            $(this).slideDown("fast");
+          }
+        });
+        $('#created-events-area > .events-section-content').each(function(index) {
+          if(index < createdLimit){
+            $(this).slideDown("fast");
+          }
+        });
+      }
+    );
+  });
 	</script>
-	<script src="Animations.js"> </script>
 </body>
 </html>

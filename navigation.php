@@ -20,7 +20,7 @@
 				<div id="userNameMenuLabel"> <?=$_SESSION['username'] ?> </div>
 					<ul>
 						<li><a href="index.php"> Dashboard </a></li>
-						<li><a href="myEvents.php"> Profile </a></li>
+						<li><a href=<?="profile.php?uid=" . $_SESSION['id']?> > Profile </a></li>
 						<li> <a href="myEvents.php"> My Events </a> </li>
 					</ul>
 				</div>
