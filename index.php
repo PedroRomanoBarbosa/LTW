@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-<?php include('head.php'); ?>
+<?php include_once('head.php'); ?>
 <body>
-	<?php include('navigation.php'); ?>
-	<?php include('mainPage.php'); ?>
-	<?php include('footer.php'); ?>
+	<?php include_once('navigation.php'); ?>
+	<?php include_once('mainPage.php'); ?>
+	<?php include_once('footer.php'); ?>
 
 	<!--Awesome scripts!-->
 		<?php if(isset($_SESSION['start'])){ ?>

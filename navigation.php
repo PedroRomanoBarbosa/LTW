@@ -19,9 +19,9 @@
 				Signed in as:
 				<div id="userNameMenuLabel"> <?=$_SESSION['username'] ?> </div>
 					<ul>
-						<li><a href="index.php"> Dashboard </a></li>
-						<li><a href=<?="profile.php?uid=" . $_SESSION['id']?> > Profile </a></li>
-						<li> <a href="myEvents.php"> My Events </a> </li>
+						<li><a href="index.php"> <i class="fa fa-search"></i> Dashboard </a></li>
+						<li><a href=<?="profile.php?uid=" . $_SESSION['id']?> > <i class="fa fa-user"></i> Profile </a></li>
+						<li> <a href="myEvents.php"> <i class="fa fa-calendar-o"></i> My Events </a> </li>
 					</ul>
 				</div>
 		<?php }else { ?>

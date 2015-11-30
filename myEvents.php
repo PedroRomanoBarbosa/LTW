@@ -7,9 +7,9 @@ if(!isset($_SESSION['start'])){
 }
 ?>
 <html>
-<?php include('head.php'); ?>
+<?php include_once('head.php'); ?>
 <body>
-	<?php include('navigation.php'); ?>
+	<?php include_once('navigation.php'); ?>
   <?php
     $db = new PDO('sqlite:Database/data.db');
 
@@ -76,7 +76,7 @@ if(!isset($_SESSION['start'])){
     <div id="events-button"> <input id="events-more" type="button" value="More"> </div>
     </div>
 
-	<?php include('footer.php'); ?>
+	<?php include_once('footer.php'); ?>
 
   <!--Awesome scripts!-->
   <?php

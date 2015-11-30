@@ -314,6 +314,8 @@ nav > * {
 
 #profileTabMenu > ul > li > a{
   margin: 0;
+  text-align: left;
+  padding-left: 1.5rem;
   padding-top: 1rem;
   padding-bottom: 1rem;
   display: block;
@@ -531,6 +533,7 @@ nav > * {
   -webkit-box-shadow: 0px 0px 14px -1px rgba(0,0,0,0.38);
   -moz-box-shadow: 0px 0px 14px -1px rgba(0,0,0,0.38);
   box-shadow: 0px 0px 14px -1px rgba(0,0,0,0.38);
+  background-color: rgb(198,37,137);
 }
 
 #event-main-area > header{
@@ -579,7 +582,7 @@ nav > * {
   right: 0;
 }
 
-#event-main-area > main > div > div > a{
+#event-main-area > article > div > div > a{
   color: rgb(150,0,0);
   font-family: sans-serif;
   font-size: 110%;
@@ -595,13 +598,13 @@ nav > * {
   float: right;
 }
 
-#event-main-area > main > div > div > a:hover{
+#event-main-area > article > div > div > a:hover{
   border: 0.1rem solid white;
   color: white;
   background-color: rgb(150,0,0);
 }
 
-#event-main-area > main > div > div > h3{
+#event-main-area > article > div > div > h3{
   width: auto;
   font-family: sans-serif;
   padding-bottom: 1rem;
@@ -617,23 +620,23 @@ nav > * {
   color: blue;
 }
 
-#event-main-area > main {
+#event-main-area > article {
   font-size: 1rem;
   padding-bottom: 4rem;
   color: black;
-  background-color: white;
+  background-color: rgb(198,37,137);
 }
 
-#event-main-area > main > h3 {
+#event-main-area > article > h3 {
   margin-left: 2rem;
   margin-right: 2rem;
   padding-top: 1rem;
   font-size: 2rem;
   font-family: sans-serif;
-  color: rgb(198,37,137);
+  color: white;
 }
 
-#event-main-area > main > p {
+#event-main-area > article > p {
   font-size: 1.5rem;
   padding-top: 1rem;
   margin-left: 3rem;
@@ -645,7 +648,7 @@ nav > * {
   float: left;
 }
 
-#event-main-area > main > div {
+#event-main-area > article > div {
   float: left;
   width: 20rem;
   color: white;
@@ -654,8 +657,56 @@ nav > * {
   background-color: rgb(23,160,134);
 }
 
-#event-main-area > main > footer {
+#event-main-area > article > footer {
   clear: both;
+}
+
+#event-main-area > input{
+  float: right;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+}
+
+#event-main-area > article > textarea{
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  margin-left: 3rem;
+  margin-right: 3rem;
+  font-family: serif;
+  width: 20rem;
+  color: gray;
+  height: 12rem;
+  float: left;
+  resize: none;
+}
+
+#radio{
+  display: none;
+}
+
+#eventName > input{
+  width: 45rem;
+  background: white;
+  color: grey;
+  font-size: 300%;
+  font-family: sans-serif;
+  border: 0;
+  resize: none;
+}
+
+#eventDate > input{
+  width: 20rem;
+  margin-top: 0.5rem;
+  background: white;
+  color: grey;
+  font-size: 200%;
+  font-family: sans-serif;
+  border: 0;
+  resize: none;
+}
+
+#eventType > input{
+
 }
 
 aside{
