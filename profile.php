@@ -41,14 +41,14 @@ if(!isset($_SESSION['start'])){
         <img src=<?=$user["imagePath"]?> alt="profilePicture"/>
         <section>
           <h2><?=$user["username"]?></h2>
-          <h3>Name: <?=$user["name"]?> </h3>
+          Name: <h3 id="profileName"> <?=$user["name"]?> </h3>
           <h4>events joined: <?=count($events)?> </h4>
         </section>
         <div class="floatClear"></div>
       </header>
       <article>
         <h1> About: </h1>
-        <p> This is a description </p>
+        <p id="profileDescription"> This is a description </p>
       </article>
     </section>
     <section id="user-events">
@@ -66,7 +66,10 @@ if(!isset($_SESSION['start'])){
       <!-- events -->
       </section>
     </section>
-    <div class="floatClear"></div>
+    <?php if($_SESSION["id"] == $user["id"]){ ?>
+      <div id="edit-section"> <input id="editButton" type="button" value="Edit"> </div>
+    <?php } ?>
+    <div class="floatClear"> </div>
   </section>
 
 
@@ -75,8 +78,12 @@ if(!isset($_SESSION['start'])){
   <!--Awesome scripts!-->
 	<script>
 			$("#logout").click(logout);
+      var uid =
+      <?php
+        echo $_GET["uid"];
+      ?>;
 			$("#userNameNav").click(openMenu);
-			$("#myEventsLink").click();
+			$("#editButton").click(editProfile);
 	</script>
 	<script src="Animations.js"> </script>
 </body>

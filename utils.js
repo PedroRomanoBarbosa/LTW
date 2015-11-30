@@ -122,3 +122,30 @@ var cancelJoinEvent = function(){
   var id = $(this).data('id');
   location.href= 'event.php?eid=' + id;
 }
+
+/**
+* Edits Profile
+*/
+
+var editProfile = function(){
+  $("#edit-section").replaceWith('<div id="edit-section"> <input id="cancelButton" type="button" value="Cancel"> <input id="saveButton" type="button" value="Save"> </div>');
+  $("#cancelButton").click(cancelEdit);
+  $("#saveButton").click(saveEdit);
+
+  var name = $("#profileName").text();
+  $("#profileName").replaceWith('<div> <textarea id="nameArea" rows="1" maxlength="60">'+name+'</textarea> </div>');
+
+  var description = $("#profileDescription").text();
+  $("#profileDescription").replaceWith('<div> <textarea rows="1" maxlength="300">' + description + '</textarea> </div>');
+}
+
+var cancelEdit = function(){
+  location.reload();
+}
+
+var saveEdit = function(){
+  var profileName = $("#nameArea").val();
+  profileName = $.trim(profileName);
+  $.post( "changeProfile.php", { name: profileName, userId: uid } );
+  location.reload();
+}

@@ -75,6 +75,12 @@ INSERT INTO event (ownerId, name, image, imagePath, dateOfEvent, description, ty
 	(SELECT id FROM typeOfEvent WHERE id=2)
 );
 
+INSERT INTO event (ownerId, name, image, imagePath, dateOfEvent, description, type) VALUES (
+	(SELECT id FROM user WHERE id=1),
+	"Back to The Past", 0, "example.jpg", "2014-11-23 12:30", "Time travel 0.o",
+	(SELECT id FROM typeOfEvent WHERE id=2)
+);
+
 
 /* INSERT COMENTS */
 INSERT INTO comment (userId, eventId, content) VALUES (1,1," Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vitae vestibulum nibh, eu mattis nunc. Donec ut diam nisl. Maecenas sed dolor vel sapien tristique maximus eu in leo. Mauris molestie eu diam a tempus. Fusce at ex mauris. Donec fermentum augue id elit dignissim gravida non eget eros. Aenean maximus purus sed aliquam rhoncus.");
@@ -82,9 +88,13 @@ INSERT INTO comment (userId, eventId, content) VALUES (2,1," Lorem ipsum dolor s
 
 
 /* INSERT EVENT USER JUNCTION TABLE */
-INSERT INTO eventUser (userId, eventId) VALUES (1,1);
 INSERT INTO eventUser (userId, eventId) VALUES (1,3);
+INSERT INTO eventUser (userId, eventId) VALUES (1,2);
+INSERT INTO eventUser (userId, eventId) VALUES (1,4);
 INSERT INTO eventUser (userId, eventId) VALUES (2,1);
+INSERT INTO eventUser (userId, eventId) VALUES (2,2);
+INSERT INTO eventUser (userId, eventId) VALUES (2,3);
+INSERT INTO eventUser (userId, eventId) VALUES (2,4);
 
 
 /* QUERIES */
