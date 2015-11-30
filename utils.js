@@ -149,3 +149,34 @@ var saveEdit = function(){
   $.post( "changeProfile.php", { name: profileName, userId: uid } );
   location.reload();
 }
+
+var editEvent = function(){
+  $("#editButton").replaceWith('<input id="cancelButton" type="button" value="Cancel"> <input id="saveButton" type="button" value="Save"> ');
+  $("#cancelButton").click(cancelEdit);
+  $("#saveButton").click(saveEditEvent);
+
+  var eventName = $("#eventName").text();
+  $("#eventName").replaceWith('<div id="eventName"> <input maxlength="60" value="' + $.trim(eventName) + '"> </div>');
+  var eventDate = $("#eventDate").text();
+  $("#eventDate").replaceWith('<div id="eventDate"> <input maxlength="60" value="' + $.trim(eventDate.substr(7)) + '"> </div>');
+  var eventDescription = $("#eventDescription").text();
+  $("#eventDescription").replaceWith('<textarea id="eventDescription" maxlength="400">' + $.trim(eventDescription) + ' </textarea>');
+  $("#event-main-area > header > h3").css("display","none");
+  $("#radio").css("display","block");
+  $("#radio > input").each(function(){
+    if($(this).val() == $("#radio").data("id")){
+      $(this).attr("checked","checked");
+    }
+  });
+}
+
+var saveEditEvent = function(){
+  var newName = $.trim($("#eventName > input").val());
+  var newDate = $.trim($("#eventDate > input").val());
+  var newType = $("input[name='type']:checked").val();
+  var newDescription = $.trim($("#eventDescription").val());
+  var id = $("#event-main-area").data("id");
+
+  $.post( "changeEvent.php", { name: newName, date: newDate, type: newType, description: newDescription, eid: id } );
+  location.reload();
+}

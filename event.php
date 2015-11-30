@@ -7,9 +7,9 @@ if(!isset($_SESSION['start'])){
 }
 ?>
 <html>
-<?php include('head.php'); ?>
+<?php include_once('head.php'); ?>
 <body>
-	<?php include('navigation.php'); ?>
+	<?php include_once('navigation.php'); ?>
   <?php
     $eventId = $_GET['eid'];
     $db = new PDO('sqlite:Database/data.db');
@@ -47,27 +47,41 @@ if(!isset($_SESSION['start'])){
     if($userInEvent == 0){
       $inTheEvent = false;
     }
+
+    /* Get types of events */
+    $tmp = $db->prepare('SELECT * FROM typeOfEvent');
+    $tmp->execute();
+    $eventTypes = $tmp->fetchAll();
+
     ?>
 
 
 
   <!-- EVENT AREA -->
-  <section id="event-main-area">
+  <section id="event-main-area" data-id=<?=$event["id"]?>>
     <?php if($event["image"] == 1){
         echo '<img id="eventImage" src=' . $event["imagePath"] . '>';
       }else if($event["image"] == 0){
         echo '<img id="eventImage" src=images/defaultImage.jpeg>';
       }
     ?>
+    <input id="editButtonTest" type="submit" value="Edit">
     <header>
-      <h1> <?=$event["name"]?> </h1>
-      <h2> Date: <?=$event["dateOfEvent"]?> </h2>
+      <h1 id="eventName"> <?=$event["name"]?> </h1>
+      <h2 id="eventDate"> Date: <?=$event["dateOfEvent"]?> </h2>
       <h3> Type: <?=$type["type"]?> </h2>
+      <div id="radio" <?='data-id="' . $event["type"] . '"'?>>
+        <h1> Type: </h1>
+      <?php foreach ($eventTypes as $eventType) { ?>
+        <input type="radio" name="type" value=<?=$eventType["id"]?>> <?=$eventType["type"]?>
+        <br>
+      <?php } ?>
+      </div>
       <h4> Created by: <a href=<?= 'profile.php?uid=' . $event["ownerId"] ?>> <?=$owner["username"]?> </a> </h4>
     </header>
-    <main>
+    <article>
       <h3> Description: </h3>
-      <p> <?=$event["description"]?> </p>
+      <p id="eventDescription"> <?=$event["description"]?> </p>
       <div>
           <div>
             <h3> <?=count($participants)?> people going </h3>
@@ -93,10 +107,21 @@ if(!isset($_SESSION['start'])){
         </aside>
       </div>
       <footer>  </footer>
-    </main>
+    </article>
+    <?php
+      if($_SESSION["id"] == $event["ownerId"]){ ?>
+        <input id="editButton" type="submit" value="Edit">
+        <div class="floatClear"></div>
+    <?php } ?>
+    </form>
   </section>
 
+
+
   <h1 id="comment-begin"> <i class="fa fa-arrow-down"></i> Comment Section <i class="fa fa-arrow-down"></i> </h1>
+
+
+
 
   <!-- YOUR COMMENT SECTION -->
   <?php if($inTheEvent || ($_SESSION['id']) == $event['ownerId']){ ?>
@@ -132,13 +157,13 @@ if(!isset($_SESSION['start'])){
       </section>
     <?php } ?>
 
-	<?php include('footer.php'); ?>
+	<?php include_once('footer.php'); ?>
 
   <!--Awesome scripts!-->
 	<script>
 			$("#logout").click(logout);
 			$("#userNameNav").click(openMenu);
-			$("#myEventsLink").click();
+      $("#editButton").click(editEvent);
 	</script>
 	<script src="Animations.js"> </script>
 </body>

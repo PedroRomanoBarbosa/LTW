@@ -1,6 +1,6 @@
 <?php
   if(isset($_SESSION['start'])){
-    include 'main.php';
+    include_once('main.php');
   }else {
 ?>
   <div id="promoArea">
@@ -14,7 +14,7 @@
   </div>
   <div id="registerArea">
     <div id="registerFormArea">
-      <?php include 'register.php'; ?>
+      <?php include_once('register.php'); ?>
     </div>
   </div>
   <?php } ?>
