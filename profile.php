@@ -7,7 +7,17 @@ if(!isset($_SESSION['start'])){
 }
 ?>
 <html>
-<?php include('head.php'); ?>
+<head>
+  <title>Eventus</title>
+  <meta charset='UTF-8'>
+  <script src="jquery-1.11.3.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="Styles/Styles.css">
+  <link rel="stylesheet" type="text/css" href="Styles/profile.css">
+  <link rel="stylesheet" type="text/css" href="Styles/navigation.css">
+  <link rel="stylesheet" type="text/css" href="Styles/footer.css">
+  <script src="utils.js"></script>
+</head>
 <body>
 	<?php include('navigation.php'); ?>
   <?php
@@ -27,7 +37,7 @@ if(!isset($_SESSION['start'])){
     /* Get created events */
     $tmp = $db->prepare('SELECT event.id, event.name, event.dateOfEvent, typeOfEvent.type, event.image, event.imagePath FROM
     user JOIN event JOIN typeOfEvent WHERE
-    event.ownerId = user.id AND typeOfEvent.id = event.type AND user.id = ?
+    event.ownerId = user.id AND typeOfEvent.id = event.typeId AND user.id = ?
     ORDER BY event.dateOfEvent ASC');
     $tmp->execute(array($userId));
     $createdEvents = $tmp->fetchAll();

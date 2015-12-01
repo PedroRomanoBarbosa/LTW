@@ -1,0 +1,14 @@
+body > footer{
+  width: 100%;
+  min-width: 80rem;
+  background-color: rgb(23,160,134);
+  padding-top: 5rem;
+  padding-bottom: 7rem;
+  text-align: center;
+  font-family: sans-serif;
+}
+
+#feupLogo{
+  width: 20rem;
+  padding-bottom: 1rem;
+}

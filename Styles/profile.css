@@ -1,0 +1,147 @@
+/*---------PROFILE-------------------*/
+#profile-area{
+  margin: auto;
+  margin-top: 10rem;
+  margin-bottom: 10rem;
+  font-family: sans-serif;
+  width: 60rem;
+  background: rgb(25,189,155);
+  border-radius: 0.2rem;
+  -webkit-box-shadow: 0px 0px 14px -1px rgba(0,0,0,0.38);
+  -moz-box-shadow: 0px 0px 14px -1px rgba(0,0,0,0.38);
+  box-shadow: 0px 0px 14px -1px rgba(0,0,0,0.38);
+}
+
+#edit-section > input{
+  float: right;
+  margin: 0.5rem;
+}
+
+#user-info{
+  width: 50%;
+  float: left;
+  min-height: 25rem;
+}
+
+#user-info > header > img{
+  float: left;
+  border: 0.2rem solid white;
+  border-radius: 0.5rem;
+  margin: 1rem;
+  width: 40%;
+  display: block;
+}
+
+#user-info > header > section {
+  float: left;
+  width: 45%;
+  padding-top: 2rem;
+}
+
+#user-info > header > section > h2{
+  padding-bottom: 1rem;
+  word-wrap: break-word;
+  color: white;
+}
+
+#user-info > header > section > h3{
+  padding-bottom: 1rem;
+  word-wrap: break-word;
+}
+
+#user-info > header > section > h4{
+  font-weight: bold;
+}
+
+#user-info > article {
+  padding: 1rem;
+}
+
+#user-info > article > h1 {
+  font-size: 150%;
+  color: white;
+}
+
+#user-info > article > p {
+  font-family: serif;
+  padding-top: 1rem;
+  padding-left: 1rem;
+  font-weight: bold;
+}
+
+#user-info > article > div > textarea{
+  word-wrap: break-word;
+  background: white;
+  color: grey;
+  height: 9rem;
+  font-size: 120%;
+  font-family: sans-serif;
+  width: 28rem;
+  margin: 0;
+  border: 0;
+  resize: none;
+  box-sizing: border-box;
+}
+
+#user-events{
+  height: 25rem;
+  width: 45%;
+  margin: 1rem;
+  float: left;
+  border-left: 0.2rem solid white;
+}
+
+#user-events > header > h1 {
+  text-align: center;
+}
+
+#user-events > *{
+  padding-left: 1rem;
+}
+
+#user-events > header > h1{
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  font-size: 150%;
+  color: white;
+}
+
+#user-events > section {
+  overflow-y: scroll;
+  height: 20rem;
+}
+
+#user-events > section > a {
+  padding: 0.5rem;
+  display: block;
+}
+
+#user-events > section > a > h2,h3 {
+  color: black;
+}
+
+#user-events > section > a > h4 {
+  font-style: italic;
+}
+
+#user-events > section > a:hover{
+  background: rgb(23,160,134);
+}
+
+.floatClear{
+  clear: both;
+}
+
+#user-info > header > section > div > textarea{
+  word-wrap: break-word;
+  background: white;
+  color: grey;
+  height: 4rem;
+  font-size: 120%;
+  font-family: sans-serif;
+  width: 15rem;
+  margin: 0;
+  border: 0;
+  resize: none;
+  box-sizing: border-box;
+}

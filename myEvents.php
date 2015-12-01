@@ -7,7 +7,17 @@ if(!isset($_SESSION['start'])){
 }
 ?>
 <html>
-<?php include_once('head.php'); ?>
+<head>
+  <title>Eventus</title>
+  <meta charset='UTF-8'>
+  <script src="jquery-1.11.3.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="Styles/Styles.css">
+  <link rel="stylesheet" type="text/css" href="Styles/myEvents.css">
+  <link rel="stylesheet" type="text/css" href="Styles/navigation.css">
+  <link rel="stylesheet" type="text/css" href="Styles/footer.css">
+  <script src="utils.js"></script>
+</head>
 <body>
 	<?php include_once('navigation.php'); ?>
   <?php
@@ -16,7 +26,7 @@ if(!isset($_SESSION['start'])){
     /* Run query to find events joined by the user */
     $tmp = $db->query('SELECT event.id, event.name, event.dateOfEvent, typeOfEvent.type, event.image, event.imagePath FROM
     user JOIN event JOIN eventUser JOIN typeOfEvent WHERE
-    user.id = eventUser.userId AND event.id = eventUser.eventId AND typeOfEvent.id = event.type AND user.id = ?
+    user.id = eventUser.userId AND event.id = eventUser.eventId AND typeOfEvent.id = event.typeId AND user.id = ?
     ORDER BY event.dateOfEvent ASC');
     $tmp->execute(array($_SESSION['id']));
     $events = $tmp->fetchAll();
@@ -24,14 +34,14 @@ if(!isset($_SESSION['start'])){
     /* Run query to find events created by the user */
     $tmp = $db->query('SELECT event.id, event.name, event.dateOfEvent, typeOfEvent.type, event.image, event.imagePath FROM
     user JOIN event JOIN typeOfEvent WHERE
-    event.ownerId = user.id AND typeOfEvent.id = event.type AND user.id = ?
+    event.ownerId = user.id AND typeOfEvent.id = event.typeId AND user.id = ?
     ORDER BY event.dateOfEvent ASC');
     $tmp->execute(array($_SESSION['id']));
     $myEvents = $tmp->fetchAll();
     ?>
 
-    <a id="create-event-button" href="createEvent.php"> <i class="fa fa-plus-circle"></i> CREATE A NEW EVENT </a>
     <div id="content-events">
+      <a id="create-event-button" href="createEvent.php"> <i class="fa fa-plus-circle"></i> CREATE A NEW EVENT </a>
       <!-- JOINED EVENTS */ -->
       <div id="joined-events-area">
         <div class="events-section-title"> JOINED EVENTS </div>

@@ -1,0 +1,384 @@
+/*---------EVENT PAGE------------*/
+
+#event-main-area{
+  width: 50rem;
+  margin: auto;
+  margin-top: 8rem;
+  margin-bottom: 5rem;
+  border: 0.5rem solid rgb(198,37,137);
+  border-radius: 0.4rem;
+  -webkit-box-shadow: 0px 0px 14px -1px rgba(0,0,0,0.38);
+  -moz-box-shadow: 0px 0px 14px -1px rgba(0,0,0,0.38);
+  box-shadow: 0px 0px 14px -1px rgba(0,0,0,0.38);
+  background-color: rgb(198,37,137);
+}
+
+#event-main-area > header{
+  padding-bottom: 1rem;
+  position: relative;
+  background-color: rgb(198,37,137);
+}
+
+#event-main-area > header > *{
+  margin-left: 2rem;
+  margin-right: 2rem;
+  font-family: sans-serif;
+}
+
+#event-main-area > img{
+  margin: 0;
+  padding: 0;
+  border: 0;
+  display: block;
+  width: 100%;
+  height: 20rem;
+}
+
+#event-main-area > header > h1{
+  font-size: 3rem;
+  font-family: sans-serif;
+  color: white;
+  border-bottom: 0.1rem solid rgb(100,0,0);
+}
+
+#event-main-area > header > h2{
+  font-size: 2rem;
+  color: black;
+}
+
+#event-main-area > header > h3{
+  font-size: 1.5rem;
+  color: white;
+}
+
+#event-main-area > header > h4{
+  font-size: 1rem;
+  position: absolute;
+  color: white;
+  bottom: 3rem;
+  right: 0;
+}
+
+#event-main-area > article > div > div > a{
+  color: rgb(150,0,0);
+  font-family: sans-serif;
+  font-size: 110%;
+  border: 0.1rem solid rgb(150,0,0);
+  background-color: rgba(0,0,0);
+  text-align: center;
+  width: 7rem;
+  margin-left: 1rem;
+  border-radius: 0.2rem;
+  outline: none;
+  padding-right: 0.2rem;
+  padding-left: 0.2rem;
+  float: right;
+}
+
+#event-main-area > article > div > div > a:hover{
+  border: 0.1rem solid white;
+  color: white;
+  background-color: rgb(150,0,0);
+}
+
+#event-main-area > article > div > div > h3{
+  width: auto;
+  font-family: sans-serif;
+  padding-bottom: 1rem;
+  float: left;
+}
+
+#event-main-area > header > h4 > a{
+  color: black;
+  text-decoration: underline;
+}
+
+#event-main-area > header > h4 > a:hover{
+  color: blue;
+}
+
+#event-main-area > article {
+  font-size: 1rem;
+  padding-bottom: 4rem;
+  color: black;
+  background-color: rgb(198,37,137);
+}
+
+#event-main-area > article > h3 {
+  margin-left: 2rem;
+  margin-right: 2rem;
+  padding-top: 1rem;
+  font-size: 2rem;
+  font-family: sans-serif;
+  color: white;
+}
+
+#event-main-area > article > p {
+  font-size: 1.5rem;
+  padding-top: 1rem;
+  margin-left: 3rem;
+  margin-right: 3rem;
+  word-wrap: break-word;
+  font-family: serif;
+  width: 20rem;
+  height: 10rem;
+  float: left;
+}
+
+#event-main-area > article > div {
+  float: left;
+  width: 20rem;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 0.2rem;
+  background-color: rgb(23,160,134);
+}
+
+#event-main-area > article > footer {
+  clear: both;
+}
+
+#event-main-area > input{
+  float: right;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+}
+
+#event-main-area > article > textarea{
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  margin-left: 3rem;
+  margin-right: 3rem;
+  font-family: serif;
+  width: 20rem;
+  color: gray;
+  height: 12rem;
+  float: left;
+  resize: none;
+}
+
+#radio{
+  display: none;
+}
+
+#eventName > input{
+  width: 45rem;
+  background: white;
+  color: grey;
+  font-size: 300%;
+  font-family: sans-serif;
+  border: 0;
+  resize: none;
+}
+
+#eventDate > input{
+  width: 20rem;
+  margin-top: 0.5rem;
+  background: white;
+  color: grey;
+  font-size: 200%;
+  font-family: sans-serif;
+  border: 0;
+  resize: none;
+}
+
+#eventType > input{
+
+}
+
+aside{
+  width: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 10rem;
+  color: black;
+  font-family: sans-serif;
+  background-color: white;
+}
+
+aside > a{
+  display: block;
+  padding-left: 1rem;
+  padding-top: 0.2rem;
+  padding-bottom: 0.3rem;
+}
+
+aside > a:hover{
+  background-color: rgb(230,230,230);
+}
+
+aside > a > img{
+  display: block;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  float: left;
+}
+
+aside > a > h3{
+  color: black;
+  padding-left: 2.5rem;
+  padding-top: 0.5rem;
+}
+
+aside > div{
+  clear: both;
+}
+
+#comment-begin{
+  color: rgb(198,37,137);
+  font-size: 400%;
+  margin: auto;
+  width: 50rem;
+  font-weight: bold;
+  font-family: sans-serif;
+  text-align: center;
+  margin-top: 10rem;
+  margin-bottom: 3rem;
+}
+
+#your-comment{
+  font-family: sans-serif;
+  width: 50rem;
+  margin: auto;
+  border: 0.5rem solid rgb(23,160,134);
+  border-radius: 0.2rem;
+  margin-bottom: 5rem;
+}
+
+#your-comment > header{
+  padding: 0.5rem;
+  background-color: rgb(23,160,134);
+  line-height: 1rem;
+}
+
+#your-comment > header > img{
+  background-color: white;
+  border: 0.2rem solid white;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#your-comment > header > h2{
+  color: white;
+  padding-left: 1rem;
+  font-size: 200%;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#your-comment > main{
+  background-color: rgb(23,160,134);
+}
+
+#your-comment > main > h1{
+  background-color: rgb(25,189,155);
+  color: rgb(198,37,137);
+  padding: 0.5rem;
+}
+
+#your-comment > main > form{
+  background-color: rgb(23,160,134);
+}
+
+#your-comment > main > form > textarea{
+  overflow: auto;
+  height: 10rem;
+  background: white;
+  color: grey;
+  font-size: 150%;
+  font-family: sans-serif;
+  width: 50rem;
+  margin: 0;
+  border: 0;
+  resize: none;
+  box-sizing: border-box;
+}
+
+#your-comment > main > form > input{
+  float: right;
+  width: 7rem;
+  padding-left: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-right: 1rem;
+}
+
+#your-comment > main > footer{
+  clear: both;
+}
+
+
+/* comments
+<!-- COMMENTS SECTION -->
+<section id="users-comments-section">
+  <?php foreach ($comments as $comment) { ?>
+    <section>
+      <header>
+        <img src=<?=$comment["imagePath"] ?>>
+        <a href=<?= 'profile.php?uid=' . $comment["id"] ?>> <?=$user['username']?> </a>
+        <div></div>
+      </header>
+      <main>
+      </main>
+    </section>
+  <?php } ?>
+</section>
+*/
+#users-comments-section{
+  font-family: sans-serif;
+  width: 45rem;
+  margin: auto;
+  border: 0.5rem solid rgb(23,160,134);
+  border-radius: 0.2rem;
+  margin-bottom: 5rem;
+}
+
+#users-comments-section > header{
+  background-color: rgb(23,160,134);
+  padding-bottom: 0.5rem;
+}
+
+#users-comments-section > header > img{
+  background-color: white;
+  border: 0.2rem solid white;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#users-comments-section > header > a{
+  color: white;
+  padding-left: 1rem;
+  font-size: 150%;
+  font-weight: bold;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#users-comments-section > header > a:hover{
+  text-decoration: underline;
+}
+
+#users-comments-section > main {
+  background-color: rgb(23,160,134);
+}
+
+#users-comments-section > main > textarea{
+  word-wrap: break-word;
+  background: white;
+  color: grey;
+  height: 10rem;
+  font-size: 140%;
+  font-family: sans-serif;
+  width: 45rem;
+  margin: 0;
+  border: 0;
+  resize: none;
+  box-sizing: border-box;
+}
