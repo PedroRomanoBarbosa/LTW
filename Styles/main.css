@@ -1,0 +1,120 @@
+
+footer{
+  margin-top: 10rem;
+}
+
+#main-area{
+  width: 55rem;
+  margin: auto;
+  margin-top: 15rem;
+}
+
+#search-bar-area{
+  width: 100%;
+  font-size: 300%;
+  padding-bottom: 5rem;
+  color: grey;
+}
+
+#submit-search{
+  margin-left: 1rem;
+  float: left;
+  color: white;
+  width: 4rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  border: 0;
+  background-color: rgb(233,234,237);
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.6;
+  background-image: url("../images/search-icon.png");
+}
+
+#submit-search:hover{
+  opacity: 1;
+  background-color: rgb(233,234,237);
+}
+
+#search-bar{
+  display: block;
+  margin-left: 1rem;
+  padding-left: 1rem;
+  width: 85%;
+  color: grey;
+  font-size: 100%;
+  background-color: white;
+  font-family: sans-serif;
+  border: 0;
+  border-radius: 0.5rem;
+  float: left;
+}
+
+#search-icon{
+  float: left;
+}
+
+#search-button > i{
+  position: relative;
+  z-index: 1;
+  left: -25px;
+  top: 1px;
+  color: #7B7B7B;
+  cursor: pointer;
+  width: 0;
+}
+
+.search-event{
+  display: block;
+  margin: auto;
+  width: 45rem;
+  height: 20rem;
+  position: relative;
+  margin-bottom: 5rem;
+  -webkit-box-shadow: 0px 0px 14px -1px rgba(0,0,0,0.38);
+  -moz-box-shadow: 0px 0px 14px -1px rgba(0,0,0,0.38);
+  box-shadow: 0px 0px 14px -1px rgba(0,0,0,0.38);
+}
+
+.search-event:hover{
+  -webkit-box-shadow: 0px 0px 36px 5px rgba(0,0,0,0.38);
+  -moz-box-shadow: 0px 0px 36px 5px rgba(0,0,0,0.38);
+  box-shadow: 0px 0px 36px 5px rgba(0,0,0,0.38);
+}
+
+.search-event > img{
+  width: 100%;
+  height: 100%;
+}
+
+.search-event > section{
+  position: absolute;
+  background-color: rgb(198,37,137);
+  top: 50%;
+  height: 50%;
+  width: 100%;
+  opacity: 0.9;
+  font-family: sans-serif;
+  color: white;
+}
+
+.search-event > section > h1{
+  padding-top: 0.5rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  font-size: 280%;
+  word-wrap: break-word;
+  border-bottom: 0.1rem solid rgb(100,0,0);
+}
+
+.search-event > section > h2{
+  margin-left: 1rem;
+  color: black;
+  font-size: 150%;
+  padding-top: 0.5rem;
+}
+
+.search-event > section > h3{
+  margin-left: 1rem;
+  font-style: italic;
+}

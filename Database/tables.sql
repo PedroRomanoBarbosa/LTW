@@ -27,7 +27,7 @@ CREATE TABLE event (
 	imagePath TEXT,
 	dateOfEvent DATE,
 	description TEXT,
-	type INTEGER REFERENCES typeOfEvent(id)
+	typeId INTEGER REFERENCES typeOfEvent(id)
 );
 
 CREATE TABLE eventUser (
@@ -57,25 +57,25 @@ INSERT INTO user (name,username,password,imagepath) VALUES ("João Romano Barbos
 
 
 /* INSERT EVENTS */
-INSERT INTO event (ownerId, name, image, imagePath, dateOfEvent, description, type) VALUES (
+INSERT INTO event (ownerId, name, image, imagePath, dateOfEvent, description, typeId) VALUES (
 	(SELECT id FROM user WHERE id=1),
 	"D'bandada", 0, "example.jpg", "2015-11-23 12:00", "example description",
 	(SELECT id FROM typeOfEvent WHERE id=2)
 );
 
-INSERT INTO event (ownerId, name, image, imagePath, dateOfEvent, description, type) VALUES (
+INSERT INTO event (ownerId, name, image, imagePath, dateOfEvent, description, typeId) VALUES (
 	(SELECT id FROM user WHERE id=1),
 	"Jantar de Curso MIEIC", 0, "example.jpg", "2016-01-10 12:30", "Jantar de curso ;)",
 	(SELECT id FROM typeOfEvent WHERE id=1)
 );
 
-INSERT INTO event (ownerId, name, image, imagePath, dateOfEvent, description, type) VALUES (
+INSERT INTO event (ownerId, name, image, imagePath, dateOfEvent, description, typeId) VALUES (
 	(SELECT id FROM user WHERE id=1),
 	"Paredes de Coura", 1, "images/eventImages/image1.jpg", "2015-11-23 12:30", "example description",
 	(SELECT id FROM typeOfEvent WHERE id=2)
 );
 
-INSERT INTO event (ownerId, name, image, imagePath, dateOfEvent, description, type) VALUES (
+INSERT INTO event (ownerId, name, image, imagePath, dateOfEvent, description, typeId) VALUES (
 	(SELECT id FROM user WHERE id=1),
 	"Back to The Past", 0, "example.jpg", "2014-11-23 12:30", "Time travel 0.o",
 	(SELECT id FROM typeOfEvent WHERE id=2)

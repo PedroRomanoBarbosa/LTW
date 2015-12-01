@@ -7,9 +7,19 @@ if(!isset($_SESSION['start'])){
 }
 ?>
 <html>
-<?php include_once('head.php'); ?>
+<head>
+  <title>Eventus</title>
+  <meta charset='UTF-8'>
+  <script src="jquery-1.11.3.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="Styles/Styles.css">
+  <link rel="stylesheet" type="text/css" href="Styles/event.css">
+  <link rel="stylesheet" type="text/css" href="Styles/navigation.css">
+  <link rel="stylesheet" type="text/css" href="Styles/footer.css">
+  <script src="utils.js"></script>
+</head>
 <body>
-	<?php include_once('navigation.php'); ?>
+  <?php include_once('navigation.php'); ?>
   <?php
     $eventId = $_GET['eid'];
     $db = new PDO('sqlite:Database/data.db');
@@ -21,7 +31,7 @@ if(!isset($_SESSION['start'])){
 
     /* Run query to find event's type */
     $tmp = $db->prepare('SELECT typeOfEvent.type FROM typeOfEvent WHERE typeOfEvent.id = ?');
-    $tmp->execute(array($event["type"]));
+    $tmp->execute(array($event["typeId"]));
     $type = $tmp->fetch();
 
     /* Run query to find event's owner's */
@@ -70,7 +80,7 @@ if(!isset($_SESSION['start'])){
       <h1 id="eventName"> <?=$event["name"]?> </h1>
       <h2 id="eventDate"> Date: <?=$event["dateOfEvent"]?> </h2>
       <h3> Type: <?=$type["type"]?> </h2>
-      <div id="radio" <?='data-id="' . $event["type"] . '"'?>>
+      <div id="radio" <?='data-id="' . $event["typeId"] . '"'?>>
         <h1> Type: </h1>
       <?php foreach ($eventTypes as $eventType) { ?>
         <input type="radio" name="type" value=<?=$eventType["id"]?>> <?=$eventType["type"]?>
