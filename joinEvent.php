@@ -5,7 +5,7 @@
   $userId = $_SESSION['id'];
 
   /* Deletes connection between event and the user */
-  $tmp = $db->prepare('DELETE FROM eventUser WHERE userId = ? AND eventId = ?');
+  $tmp = $db->prepare('INSERT INTO eventUser (userId, eventId) VALUES (?,?);');
   $tmp->execute(array($userId,$eventId));
   header("Location: event.php?eid=" . $eventId);
   exit;

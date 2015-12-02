@@ -116,9 +116,9 @@ var openMenu = function(){
 }
 
 /**
-* Eliminates a joined event from the user
+* Goes to the event page
 */
-var cancelJoinEvent = function(){
+var goToEvent = function(){
   var id = $(this).data('id');
   location.href= 'event.php?eid=' + id;
 }

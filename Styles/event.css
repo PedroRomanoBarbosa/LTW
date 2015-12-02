@@ -5,8 +5,6 @@
   margin: auto;
   margin-top: 8rem;
   margin-bottom: 5rem;
-  border: 0.5rem solid rgb(198,37,137);
-  border-radius: 0.4rem;
   -webkit-box-shadow: 0px 0px 14px -1px rgba(0,0,0,0.38);
   -moz-box-shadow: 0px 0px 14px -1px rgba(0,0,0,0.38);
   box-shadow: 0px 0px 14px -1px rgba(0,0,0,0.38);
@@ -182,9 +180,6 @@
   resize: none;
 }
 
-#eventType > input{
-
-}
 
 aside{
   width: 100%;
@@ -224,6 +219,55 @@ aside > a > h3{
 aside > div{
   clear: both;
 }
+
+
+#withdraw-button{
+  background-color: orange;
+  width: 100%;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  color: white;
+  font-size: 300%;
+}
+
+#join-button{
+  background-color: rgb(23,160,134);
+  width: 100%;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  color: white;
+  font-size: 300%;
+}
+
+#cancel-button{
+  background-color: rgb(100,0,0);
+  width: 100%;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  color: white;
+  font-size: 300%;
+}
+
+#withdraw-button:hover,#join-button:hover,#cancel-button:hover{
+  -webkit-box-shadow: inset 0px 0px 50px rgba(0,0,0,0.38);
+  -moz-box-shadow: inset 0px 0px 50px rgba(0,0,0,0.38);
+  box-shadow: inset 0px 0px 50px rgba(0,0,0,0.38);
+  color: rgb(200,200,200);
+}
+
+
 
 #comment-begin{
   color: rgb(198,37,137);

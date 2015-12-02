@@ -52,7 +52,7 @@ if(!isset($_SESSION['start'])){
     /* Check if the actual user is going to the event */
     $tmp = $db->prepare('SELECT user.id FROM user JOIN eventUser WHERE eventUser.userId = user.id AND eventUser.userId = ? AND eventUser.eventId = ?');
     $tmp->execute(array($_SESSION["id"], $event["id"]));
-    $userInEvent = $tmp->fetchAll();
+    $userInEvent = $tmp->fetch();
     $inTheEvent = true;
     if($userInEvent == 0){
       $inTheEvent = false;
@@ -95,16 +95,6 @@ if(!isset($_SESSION['start'])){
       <div>
           <div>
             <h3> <?=count($participants)?> people going </h3>
-            <?php if($event["ownerId"] == $_SESSION["id"]){
-                echo '<a href=""> CANCEL </a>';
-            }else {
-              if($inTheEvent){
-                echo '<a href=""> WITHDRAW </a>';
-              }else {
-                echo '<a href=""> JOIN </a>';
-              }
-            }
-            ?>
           </div>
         <aside>
           <?php foreach ($participants as $user) { ?>
@@ -123,7 +113,27 @@ if(!isset($_SESSION['start'])){
         <input id="editButton" type="submit" value="Edit">
         <div class="floatClear"></div>
     <?php } ?>
-    </form>
+    <?php
+    /* If its the owner of the event */
+    if($event["ownerId"] == $_SESSION["id"]){
+        /* If it is in the event */
+        if($inTheEvent){
+          echo '<form method="post" action="cancelJoinEvent.php"> <input type="hidden" name="id" value="' . $event["id"] . '"> <input id="withdraw-button" type="submit" value="WITHDRAW"> </form>';
+        /* If its not */
+        }else {
+          echo '<form method="post" action="joinEvent.php"> <input type="hidden" name="id" value="' . $event["id"] . '"> <input id="join-button" type="submit" value="JOIN!"> </form>';
+        }
+        echo '<form method="post" action="cancelEvent.php"> <input type="hidden" name="id" value="' . $event["id"] . '"> <input id="cancel-button" type="submit" value="CANCEL EVENT"> </form>';
+    }else {
+      /* If it is in the event */
+      if($inTheEvent){
+        echo '<form method="post" action="cancelJoinEvent.php"> <input type="hidden" name="id" value="' . $event["id"] . '"> <input id="withdraw-button" type="submit" value="WITHDRAW"> </form>';
+      /* If its not */
+      }else {
+        echo '<form method="post" action="joinEvent.php"> <input type="hidden" name="id" value="' . $event["id"] . '"> <input id="join-button" type="submit" value="JOIN!"> </form>';
+      }
+    }
+    ?>
   </section>
 
 
