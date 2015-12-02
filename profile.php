@@ -12,7 +12,7 @@ if(!isset($_SESSION['start'])){
   <meta charset='UTF-8'>
   <script src="jquery-1.11.3.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="Styles/Styles.css">
+  <link rel="stylesheet" type="text/css" href="Styles/styles.css">
   <link rel="stylesheet" type="text/css" href="Styles/profile.css">
   <link rel="stylesheet" type="text/css" href="Styles/navigation.css">
   <link rel="stylesheet" type="text/css" href="Styles/footer.css">
