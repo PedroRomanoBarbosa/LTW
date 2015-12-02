@@ -91,10 +91,10 @@ INSERT INTO comment (userId, eventId, content) VALUES (2,1," Lorem ipsum dolor s
 INSERT INTO eventUser (userId, eventId) VALUES (1,3);
 INSERT INTO eventUser (userId, eventId) VALUES (1,2);
 INSERT INTO eventUser (userId, eventId) VALUES (1,4);
+
 INSERT INTO eventUser (userId, eventId) VALUES (2,1);
 INSERT INTO eventUser (userId, eventId) VALUES (2,2);
 INSERT INTO eventUser (userId, eventId) VALUES (2,3);
-INSERT INTO eventUser (userId, eventId) VALUES (2,4);
 
 
 /* QUERIES */
