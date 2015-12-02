@@ -44,4 +44,5 @@
 			<div class="floatClear"> <div>
 		</form>
 	<?php } ?>
+	<div id="space"></div>
 </section>

@@ -16,6 +16,10 @@ footer{
   color: grey;
 }
 
+#space{
+  height: 10rem;
+}
+
 #submit-search{
   margin-left: 1rem;
   float: left;
