@@ -46,21 +46,37 @@ if(!isset($_SESSION['start'])){
 
   <!-- PROFILE AREA -->
   <section id="profile-area">
-    <section id="user-info">
-      <header>
-        <img src=<?=$user["imagePath"]?> alt="profilePicture"/>
-        <section>
-          <h2><?=$user["username"]?></h2>
-          Name: <h3 id="profileName"> <?=$user["name"]?> </h3>
-          <h4>events joined: <?=count($events)?> </h4>
-        </section>
-        <div class="floatClear"></div>
-      </header>
-      <article>
-        <h1> About: </h1>
-        <p id="profileDescription"> This is a description </p>
-      </article>
-    </section>
+    <nav id="profile-nav" data-nav=<?=$_GET["nav"]?>>
+      <ul>
+        <li id="nav-profile"><a href=<?="profile.php?uid=" . $userId . "&nav=profile"?>><i class="fa fa-user"></i> Profile</a></li>
+        <li id="nav-events"><a href=<?="profile.php?uid=" . $userId . "&nav=events"?>><i class="fa fa-calendar-o"></i> Events</a></li>
+        <?php if($_SESSION["id"] == $user["id"]){ ?>
+          <li id="nav-edit"><a href=<?="profile.php?uid=" . $userId . "&nav=edit"?>><i class="fa fa-pencil"></i> Edit</a></li>
+        <?php } ?>
+      </ul>
+    </nav>
+
+
+    <!-- PROFILE -->
+    <?php if($_GET["nav"] == "profile"){ ?>
+      <section id="user-info">
+        <header>
+          <img id="profile-image" src=<?=$user["imagePath"]?> alt="profilePicture"/>
+          <section>
+            <h2><?=$user["username"]?></h2>
+            Name: <h3 id="profileName"> <?=$user["name"]?> </h3>
+            <h4>events joined: <?=count($events)?> </h4>
+          </section>
+          <div class="floatClear"></div>
+        </header>
+        <article>
+          <h1> About Me: </h1>
+          <p id="profileDescription"> <?=$user["biography"]?> </p>
+        </article>
+      </section>
+
+    <!-- EVENTS CREATED -->
+    <?php }else if($_GET["nav"] == "events"){ ?>
     <section id="user-events">
       <header>
         <h1> Created Events </h1>
@@ -76,9 +92,45 @@ if(!isset($_SESSION['start'])){
       <!-- events -->
       </section>
     </section>
-    <?php if($_SESSION["id"] == $user["id"]){ ?>
-      <div id="edit-section"> <input id="editButton" type="button" value="Edit"> </div>
-    <?php } ?>
+
+
+
+    <!-- EDIT  -->
+    <?php }else if($_GET["nav"] == "edit" && $_SESSION["id"] == $user["id"]){ ?>
+    <section id="user-edit">
+      <header>
+        Edit your profile here!
+      </header>
+      <form action="changeProfile.php" method="post" enctype="multipart/form-data">
+        <label> Profile Image: </label>
+        <br/>
+        <?php if($user["image"] == 1){?>
+          <img id="image-preview" src=<?=$user["imagePath"]?> alt="preview image"/>
+        <?php }else{ ?>
+          <img id="image-preview" src="images/defaultUserImage.png" alt="preview image"/>
+        <?php } ?>
+        <br/>
+        <input type="checkbox" name="defaultImage" value="check"/> Reset to default image or
+        <input type="file" name="uploadFile" id="upload-file" value="upload file"/>
+        <br/>
+        <label> Your name: </label>
+        <br/>
+        <input type="text" name="newName" id="new-name" value="<?php echo $user['name']; ?>"/>
+        <br/>
+        <label> About you:</label>
+        <br/>
+        <textarea name="newBiography" id="new-biography" maxlength="300"><?=$user["biography"]?></textarea>
+        <br/>
+        <section>
+          <input type="submit" id="submit-button" name="submitProfileEdit" value="Save"/>
+          <input type="button" id="cancel-button" name="cancelProfileEdit" value="Cancel"/>
+        </section>
+        <input type="hidden" name="uid" value=<?=$user["id"]?>>
+      </form>
+    </section>
+    <?php }else{
+      header("Location: index.php");
+    } ?>
     <div class="floatClear"> </div>
   </section>
 
@@ -88,12 +140,29 @@ if(!isset($_SESSION['start'])){
   <!--Awesome scripts!-->
 	<script>
 			$("#logout").click(logout);
-      var uid =
-      <?php
-        echo $_GET["uid"];
-      ?>;
+      var nav = $("#profile-nav").data("nav");
+      switch (nav) {
+        case "profile":
+          $("#nav-profile").css("background-color","rgb(25,189,155)");
+          $("#nav-profile > a").css("border-bottom","0.2rem solid white");
+          break;
+        case "events":
+          $("#nav-events").css("background-color","rgb(25,189,155)");
+          $("#nav-events > a").css("border-bottom","0.2rem solid white");
+          break;
+        case "edit":
+          $("#nav-edit").css("background-color","rgb(25,189,155)");
+          $("#nav-edit > a").css("border-bottom","0.2rem solid white");
+          break;
+      }
 			$("#userNameNav").click(openMenu);
 			$("#editButton").click(editProfile);
+
+      $("#upload-file").change(function(){
+        $("#image-preview").slideUp("fast");
+        readURL(this);
+        $("#image-preview").slideDown("fast");
+      });
 	</script>
 	<script src="Animations.js"> </script>
 </body>

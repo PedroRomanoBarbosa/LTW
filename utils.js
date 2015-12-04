@@ -128,6 +128,9 @@ var goToEvent = function(){
 */
 
 var editProfile = function(){
+  $("#profile-image").css("background-image","none");
+  $("#profile-image").before("<input type='file' id='image-file' value='choose file'>");
+
   $("#edit-section").replaceWith('<div id="edit-section"> <input id="cancelButton" type="button" value="Cancel"> <input id="saveButton" type="button" value="Save"> </div>');
   $("#cancelButton").click(cancelEdit);
   $("#saveButton").click(saveEdit);
@@ -145,8 +148,10 @@ var cancelEdit = function(){
 
 var saveEdit = function(){
   var profileName = $("#nameArea").val();
+  var imagePath = $("#image-file").val();
+  console.log(imagePath);
   profileName = $.trim(profileName);
-  $.post( "changeProfile.php", { name: profileName, userId: uid } );
+  $.post( "changeProfile.php", { name: profileName, image: imagePath, userId: uid } );
   location.reload();
 }
 
@@ -163,20 +168,28 @@ var editEvent = function(){
   $("#eventDescription").replaceWith('<textarea id="eventDescription" maxlength="400">' + $.trim(eventDescription) + ' </textarea>');
   $("#event-main-area > header > h3").css("display","none");
   $("#radio").css("display","block");
-  $("#radio > input").each(function(){
-    if($(this).val() == $("#radio").data("id")){
-      $(this).attr("checked","checked");
-    }
-  });
 }
 
 var saveEditEvent = function(){
   var newName = $.trim($("#eventName > input").val());
   var newDate = $.trim($("#eventDate > input").val());
-  var newType = $("input[name='type']:checked").val();
+  var newType = $("#type-select").val();
   var newDescription = $.trim($("#eventDescription").val());
   var id = $("#event-main-area").data("id");
 
-  $.post( "changeEvent.php", { name: newName, date: newDate, type: newType, description: newDescription, eid: id } );
+  $.post( "changeEvent.php",{ name: newName, date: newDate, type: newType, description: newDescription, eid: id });
   location.reload();
+}
+
+
+
+
+function readURL(input){
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $('#image-preview').attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
 }
