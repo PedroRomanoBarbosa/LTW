@@ -80,14 +80,16 @@ if(!isset($_SESSION['start'])){
       <h1 id="eventName"> <?=$event["name"]?> </h1>
       <h2 id="eventDate"> Date: <?=$event["dateOfEvent"]?> </h2>
       <h3> Type: <?=$type["type"]?> </h2>
-      <div id="radio" <?='data-id="' . $event["typeId"] . '"'?>>
-        <h1> Type: </h1>
-      <?php foreach ($eventTypes as $eventType) { ?>
-        <input type="radio" name="type" value=<?=$eventType["id"]?>> <?=$eventType["type"]?>
-        <br>
-      <?php } ?>
+      <div id="radio">
+        <h1> Type:
+        <select id="type-select">
+          <?php foreach ($eventTypes as $eventType) { ?>
+            <option value=<?php echo $eventType["id"]; if($eventType["id"] == $event["typeId"]){ echo ' selected="selected"'; }?> ><?=$eventType["type"]?></option>
+          <?php } ?>
+        </select>
+        </h1>
       </div>
-      <h4> Created by: <a href=<?= 'profile.php?uid=' . $event["ownerId"] ?>> <?=$owner["username"]?> </a> </h4>
+      <h4> Created by: <a href=<?= 'profile.php?uid=' . $event["ownerId"]  . "&nav=profile"?>> <?=$owner["username"]?> </a> </h4>
     </header>
     <article>
       <h3> Description: </h3>
@@ -98,7 +100,7 @@ if(!isset($_SESSION['start'])){
           </div>
         <aside>
           <?php foreach ($participants as $user) { ?>
-            <a href=<?= 'profile.php?uid=' . $user["id"] ?>>
+            <a href=<?= 'profile.php?uid=' . $user["id"]  . "&nav=profile"?>>
               <img src=<?=$user["imagePath"] ?>>
               <h3> <?=$user['username']?> </h3>
               <div></div>

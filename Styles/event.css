@@ -180,6 +180,10 @@
   resize: none;
 }
 
+select {
+  font-size: 200%;
+}
+
 
 aside{
   width: 100%;

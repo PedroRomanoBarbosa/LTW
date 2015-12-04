@@ -11,7 +11,9 @@ CREATE TABLE user (
 	name TEXT,
 	username TEXT,
 	password TEXT,
-	imagePath TEXT
+	image INTEGER,
+	imagePath TEXT,
+	biography TEXT
 );
 
 CREATE TABLE typeOfEvent(
@@ -52,8 +54,8 @@ INSERT INTO typeOfEvent (type) VALUES ("Wedding");
 INSERT INTO typeOfEvent (type) VALUES ("Meeting");
 
 /* INSERT USERS */
-INSERT INTO user (name,username,password,imagePath) VALUES ("Pedro Romano Barbosa","Romanolas","123456","images/userImages/image1.jpg");
-INSERT INTO user (name,username,password,imagepath) VALUES ("João Romano Barbosa","Greentong","123456","images/userImages/image2.jpg");
+INSERT INTO user (name,username,password,image,imagePath,biography) VALUES ("Pedro Romano Barbosa","Romanolas","123456",1,"images/userImages/image1.jpg","I'm Pedro.");
+INSERT INTO user (name,username,password,image,imagepath,biography) VALUES ("João Romano Barbosa","Greentong","123456",1,"images/userImages/image2.jpg", "I'm João.");
 
 
 /* INSERT EVENTS */
