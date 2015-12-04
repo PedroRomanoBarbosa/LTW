@@ -69,6 +69,9 @@ if(!isset($_SESSION['start'])){
 
   <!-- EVENT AREA -->
   <section id="event-main-area" data-id=<?=$event["id"]?>>
+    <?php if($_SESSION["id"] == $event["ownerId"]){ ?>
+      <a id="edit-event" href=<?= "editEvent.php?eid=" . $event["id"] ?>> <i class="fa fa-pencil"></i> Edit </a>
+    <?php } ?>
     <?php if($event["image"] == 1){
         echo '<img id="eventImage" src=' . $event["imagePath"] . '>';
       }else if($event["image"] == 0){
@@ -110,11 +113,6 @@ if(!isset($_SESSION['start'])){
       </div>
       <footer>  </footer>
     </article>
-    <?php
-      if($_SESSION["id"] == $event["ownerId"]){ ?>
-        <input id="editButton" type="submit" value="Edit">
-        <div class="floatClear"></div>
-    <?php } ?>
     <?php
     /* If its the owner of the event */
     if($event["ownerId"] == $_SESSION["id"]){

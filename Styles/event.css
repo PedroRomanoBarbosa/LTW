@@ -1,5 +1,23 @@
 /*---------EVENT PAGE------------*/
 
+#edit-event{
+  width: 100%;
+  display: block;
+  background-color: rgb(23,160,134);
+  text-align: center;
+  padding-top: 1rem;
+  font-size: 300%;
+  padding-bottom: 1rem;
+  font-family: sans-serif;
+}
+
+#edit-event:hover{
+  -webkit-box-shadow: inset 0px 0px 50px rgba(0,0,0,0.38);
+  -moz-box-shadow: inset 0px 0px 50px rgba(0,0,0,0.38);
+  box-shadow: inset 0px 0px 50px rgba(0,0,0,0.38);
+  color: rgb(200,200,200);
+}
+
 #event-main-area{
   width: 50rem;
   margin: auto;
