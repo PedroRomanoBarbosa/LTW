@@ -123,7 +123,7 @@ if(!isset($_SESSION['start'])){
         <br/>
         <section>
           <input type="submit" id="submit-button" name="submitProfileEdit" value="Save"/>
-          <input type="button" id="cancel-button" name="cancelProfileEdit" value="Cancel"/>
+          <input type="submit" id="cancel-button" name="cancelProfileEdit" value="Cancel"/>
         </section>
         <input type="hidden" name="uid" value=<?=$user["id"]?>>
       </form>

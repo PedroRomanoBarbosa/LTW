@@ -21,8 +21,16 @@
 
   /* Check date */
   $date = $_POST["newDate"];
-  $date = $date . " " . $_POST["hour"];
-  $date = $date . ":" . $_POST["minutes"];
+  if(intval($_POST["hour"]) < 10){
+    $date = $date . " 0" . $_POST["hour"];
+  }else{
+    $date = $date . " " . $_POST["hour"];
+  }
+  if(intval($_POST["minutes"]) < 10){
+    $date = $date . ":0" . $_POST["minutes"];
+  }else{
+    $date = $date . ":" . $_POST["minutes"];
+  }
 
   /* If the user selected to reset to default image */
   if($image == 0){

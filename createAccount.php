@@ -15,8 +15,11 @@
       die;
   /* If there isn't */
   }else {
-    $tmp = $db->prepare('INSERT INTO user (name,username,password) VALUES  (?, ?, ?)');
-    $tmp->execute(array($name,$username,$password));
+    /* Generate hash with salt */
+    $hash = password_hash($password,PASSWORD_BCRYPT);
+    /* Insert data in the database */
+    $tmp = $db->prepare('INSERT INTO user (name,username,password,image,imagePath,biography) VALUES  (?, ?, ?, ?, ?, ?)');
+    $tmp->execute(array($name,$username,$hash,1,"images/deafultUserImage.png",""));
     echo "valid";
   }
 ?>

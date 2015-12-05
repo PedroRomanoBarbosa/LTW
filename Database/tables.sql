@@ -61,13 +61,13 @@ INSERT INTO user (name,username,password,image,imagepath,biography) VALUES ("Jo√
 /* INSERT EVENTS */
 INSERT INTO event (ownerId, name, image, imagePath, dateOfEvent, description, typeId) VALUES (
 	(SELECT id FROM user WHERE id=1),
-	"D'bandada", 0, "example.jpg", "2015-11-23 12:00", "example description",
+	"D'bandada", 0, "images/defaultImage.jpeg", "2015-11-23 12:00", "example description",
 	(SELECT id FROM typeOfEvent WHERE id=2)
 );
 
 INSERT INTO event (ownerId, name, image, imagePath, dateOfEvent, description, typeId) VALUES (
 	(SELECT id FROM user WHERE id=1),
-	"Jantar de Curso MIEIC", 0, "example.jpg", "2016-01-10 12:30", "Jantar de curso ;)",
+	"Jantar de Curso MIEIC", 0, "images/defaultImage.jpeg", "2016-01-10 12:30", "Jantar de curso ;)",
 	(SELECT id FROM typeOfEvent WHERE id=1)
 );
 
@@ -79,7 +79,7 @@ INSERT INTO event (ownerId, name, image, imagePath, dateOfEvent, description, ty
 
 INSERT INTO event (ownerId, name, image, imagePath, dateOfEvent, description, typeId) VALUES (
 	(SELECT id FROM user WHERE id=1),
-	"Back to The Past", 0, "example.jpg", "2014-11-23 12:30", "Time travel 0.o",
+	"Back to The Past", 0, "images/defaultImage.jpeg", "2014-11-23 12:30", "Time travel 0.o",
 	(SELECT id FROM typeOfEvent WHERE id=2)
 );
 
