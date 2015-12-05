@@ -1,0 +1,144 @@
+
+/*--------------CREATE EVENT--------------*/
+#create-event-title{
+  display: block;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  width: 64rem;
+  margin: auto;
+  margin-top: 7rem;
+  background-color: rgb(25,189,155);
+  font-size: 250%;
+  font-weight: bold;
+  font-family: sans-serif;
+  text-align: center;
+  -webkit-box-shadow: 0px 14px -1px rgba(0,0,0,0.38);
+  -moz-box-shadow: 0px 0px 14px -1px rgba(0,0,0,0.38);
+  box-shadow: 0px 0px 14px -1px rgba(0,0,0,0.38);
+  color: white;
+  border-radius: 0.2rem;
+}
+
+#create-event-area{
+  margin: auto;
+  margin-top: 2rem;
+  margin-bottom: 7rem;
+  font-family: sans-serif;
+  width: 64rem;
+  background: rgb(25,189,155);
+  border-radius: 0.2rem;
+  -webkit-box-shadow: 0px 0px 14px -1px rgba(0,0,0,0.38);
+  -moz-box-shadow: 0px 0px 14px -1px rgba(0,0,0,0.38);
+  box-shadow: 0px 0px 14px -1px rgba(0,0,0,0.38);
+  min-height: 7rem;
+}
+
+#buttons-create-event-area > input{
+  float: right;
+  margin: 0.5rem;
+}
+
+#create-event-area-left{
+  width: 40%;
+  float: left;
+  padding-left: 1rem;
+}
+
+#create-event-name > input{
+	width:70%;
+}
+
+#create-event-date{
+	margin-top: 1rem;
+}
+
+#create-event-date-date{
+	margin-top: 0.8rem;
+}
+
+#create-event-date-date > div{
+	display: inline-block;
+}
+
+#create-event-date-date > *{
+	padding-left: 1.5rem;
+}
+
+#event-year{
+	width: 4rem;
+}
+
+.event-2char{
+	width: 3.5rem;
+}
+
+#create-event-date-time{
+	margin-top: 0.5rem;
+	padding-left: 1.5rem;
+}
+
+#create-event-type{
+	margin-top: 2rem;
+}
+
+#create-event-type-dropdown > select{
+	margin-top: 0.7rem;
+	width: 30%;
+}
+
+#create-event-area-right{
+	float: right;
+	width: 50%;
+    padding-left: 1rem;
+	margin-top: 1.2rem;
+	border-left: 3px solid white;
+	min-height: 10rem;
+}
+
+#create-event-area-right input{
+	color: rgb(25,189,155);
+	padding-bottom: 1.5rem;
+}
+
+#create-event-image > img{
+	border-radius: 2rem;
+	border: 3px white solid;
+	width: 20rem;
+	height: 14rem;
+	margin-left: 5rem;
+}
+
+#create-event-area-center{
+  width: 80%;
+  float: center;
+  min-height: 14rem;
+  clear: both;
+  padding-top: 1.2rem;
+  padding-left: 1rem;
+}
+
+#create-event-area-center > textarea{
+	resize: none;
+}
+
+#buttons-create-event-area{
+	margin-top: -4rem;
+	padding-right: 2rem;
+	clear: both;
+	float: right;
+}
+
+#create-event-error{
+	margin-top: -9rem;
+	margin-right: 3rem;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+	clear: both;
+	float: right;
+	color: red;
+	border: 2px solid red;
+	width: 45%;
+	background-color: rgb(254,200,200);
+	border-radius: 5px;
+	text-align: center;
+}

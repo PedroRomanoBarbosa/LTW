@@ -44,6 +44,9 @@ if(!isset($_SESSION['start'])){
     $tmp->execute();
     $eventTypes = $tmp->fetchAll();
 
+    /* Get hours and minutes */
+    list($date, $time) = explode(' ', $event["dateOfEvent"]);
+    list($hour, $minutes) = explode(':', $time);
     ?>
 
 
@@ -77,13 +80,13 @@ if(!isset($_SESSION['start'])){
       <label>Time:</label>
       <select name="hour">
         <?php for ($i=0; $i < 24; $i++) { ?>
-          <option value=<?=$i?>> <?=$i?> </option>
+          <option value=<?=$i?> <?php if( $i == $hour ){ echo 'selected="selected"'; } ?> > <?=$i?> </option>
         <?php } ?>
       </select>
       <label> h : </label>
       <select name="minutes" >
         <?php for ($i=0; $i < 60; $i++) { ?>
-          <option value=<?=$i?>> <?=$i?> </option>
+          <option value=<?=$i?> <?php if( $i == $hour ){ echo 'selected="selected"'; } ?> > <?=$i?> </option>
         <?php } ?>
       </select>
       <label> m </label>

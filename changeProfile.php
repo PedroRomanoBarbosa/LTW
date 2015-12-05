@@ -4,6 +4,12 @@
   print_r($_POST);
   print_r($_FILES);
 
+  /* If user clicked cancel */
+  if($_POST["cancelProfileEdit"] == "Cancel"){
+    header("Location: profile.php?uid=" . $_POST["uid"] . "&nav=profile");
+    die();
+  }
+
   /* Get new name */
   $name = trim($_POST["newName"]);
   /* Get new biography */
