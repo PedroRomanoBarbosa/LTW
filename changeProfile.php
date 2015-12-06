@@ -1,11 +1,8 @@
 <?php
   $db = new PDO('sqlite:Database/data.db');
 
-  print_r($_POST);
-  print_r($_FILES);
-
   /* If user clicked cancel */
-  if($_POST["cancelProfileEdit"] == "Cancel"){
+  if(isset($_POST["cancelProfileEdit"]) && $_POST["cancelProfileEdit"] == "Cancel"){
     header("Location: profile.php?uid=" . $_POST["uid"] . "&nav=profile");
     die();
   }
@@ -35,17 +32,18 @@
     die();
   }else {
     $uploadOk = 1;
+    $imageFileType = pathinfo($_FILES["uploadFile"]["name"],PATHINFO_EXTENSION);
     $target_dir = "images/userImages/";
-    $target_file = $target_dir . basename($_FILES["uploadFile"]["name"]);
-    $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+    $target_file = $target_dir . basename("userImage" . $_POST["uid"]);
 
     // Check file size
-    if ($_FILES["uploadFile"]["size"] > 500000) {
+    if ($_FILES["uploadFile"]["size"] > 1000000) {
      echo "Sorry, your file is too large.";
      $uploadOk = 0;
     }
 
     // Allow certain file formats
+    echo $imageFileType;
     if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) {
       echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
       $uploadOk = 0;
@@ -56,17 +54,18 @@
       echo "Sorry, your file was not uploaded.";
     // if everything is ok, try to upload file
     } else {
-      if (move_uploaded_file($_FILES["uploadFile"]["tmp_name"], $target_file)) {
-          echo "The file ". $target_file . " has been uploaded.";
+      foreach (glob($target_file . ".*") as $filename) {
+        unlink($filename);
+      }
+      if (move_uploaded_file($_FILES["uploadFile"]["tmp_name"], $target_file . "." . $imageFileType)) {
+        /* Update user profile in database */
+        $tmp = $db->prepare('UPDATE user SET name = ?, biography = ?, image = 1, imagePath = ? WHERE id = ?');
+        $tmp->execute(array($name, $biography, $target_file . "." . $imageFileType, $_POST["uid"]));
+        header("Location: profile.php?uid=" . $_POST["uid"] . "&nav=profile");
+        die();
       } else {
           echo "Sorry, there was an error uploading your file.";
       }
     }
-
-    /* Update user profile in database */
-    $tmp = $db->prepare('UPDATE user SET name = ?, biography = ?, image = 1, imagePath = ? WHERE id = ?');
-    $tmp->execute(array($name, $biography, $target_file, $_POST["uid"]));
-    //header("Location: profile.php?uid=" . $_POST["uid"] . "&nav=profile");
-    //die();
   }
 ?>

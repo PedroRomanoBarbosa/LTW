@@ -14,17 +14,17 @@
 
   /* If the username exists compare with the password */
   }else {
-    if($user['password'] == $password){
+    if(password_verify($password, $user["password"])){
       session_start();
       $_SESSION['start'] = true;
       $_SESSION['username'] = $user['username'];
       $_SESSION['id'] = $user['id'];
       $_SESSION['imagePath'] = $user['imagePath'];
       echo "login";
-      exit;
+      exit();
     }else {
       echo 'Authentication failed!';
-      exit;
+      exit();
     }
   }
 ?>
