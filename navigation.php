@@ -40,7 +40,7 @@
 				</div>
 				<input id="password" type="password" name="password" maxlength="20">
 				<div id="errorBlock"> Valid </div>
-				<input id="login" type="button" value="Log In">
+				<input class="navigation-logout" id="login" type="button" value="Log In">
 			</form> </div>
 	<?php	} ?>
 	</div>

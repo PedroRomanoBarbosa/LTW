@@ -47,12 +47,12 @@
     die();
   }else {
     $uploadOk = 1;
-    $target_dir = "images/userImages/";
-    $target_file = $target_dir . basename($_FILES["uploadFile"]["name"]);
-    $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+    $imageFileType = pathinfo($_FILES["uploadFile"]["name"],PATHINFO_EXTENSION);
+    $target_dir = "images/eventImages/";
+    $target_file = $target_dir . basename("eventImage" . $_POST["eid"]);
 
     // Check file size
-    if ($_FILES["uploadFile"]["size"] > 500000) {
+    if ($_FILES["uploadFile"]["size"] > 1000000) {
      echo "Sorry, your file is too large.";
      $uploadOk = 0;
     }
@@ -68,17 +68,18 @@
       echo "Sorry, your file was not uploaded.";
     // if everything is ok, try to upload file
     } else {
-      if (move_uploaded_file($_FILES["uploadFile"]["tmp_name"], $target_file)) {
-          echo "The file ". $target_file . " has been uploaded.";
+      foreach (glob($target_file . ".*") as $filename) {
+        unlink($filename);
+      }
+      if (move_uploaded_file($_FILES["uploadFile"]["tmp_name"], $target_file . "." . $imageFileType)) {
+        /* Update user profile in database */
+        $tmp = $db->prepare('UPDATE event SET name = ?, description = ?, image = 1, imagePath = ?, typeId = ?, dateOfEvent = ? WHERE id = ?');
+        $tmp->execute(array($name, $description, $target_file . "." . $imageFileType, $type, $date, $_POST["eid"]));
+        header("Location: event.php?eid=" . $_POST["eid"]);
+        die();
       } else {
           echo "Sorry, there was an error uploading your file.";
       }
     }
-
-  /* Update user profile in database */
-  $tmp = $db->prepare('UPDATE user SET name = ?, description = ?, image = 1, imagePath = ? WHERE id = ?');
-  //$tmp->execute(array($name, $biography, $target_file, $_POST["uid"]));
-  //header("Location: profile.php?uid=" . $_POST["uid"] . "&nav=profile");
-  //die();
 }
 ?>

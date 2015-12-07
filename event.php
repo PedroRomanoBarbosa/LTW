@@ -10,7 +10,7 @@ if(!isset($_SESSION['start'])){
 <head>
   <title>Eventus</title>
   <meta charset='UTF-8'>
-  <script src="jquery-1.11.3.min.js"></script>
+  <script src="jquery-1.7.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="Styles/styles.css">
   <link rel="stylesheet" type="text/css" href="Styles/event.css">
@@ -63,6 +63,10 @@ if(!isset($_SESSION['start'])){
     $tmp->execute();
     $eventTypes = $tmp->fetchAll();
 
+    /* Get current user */
+    $tmp = $db->prepare('SELECT * FROM user WHERE id = ?');
+    $tmp->execute(array($_SESSION["id"]));
+    $currentUser = $tmp->fetch();
     ?>
 
 
@@ -134,6 +138,7 @@ if(!isset($_SESSION['start'])){
       }
     }
     ?>
+    <a id="gallery-button" <?php echo "href='eventGallery.php?eid=" . $eventId . "'"?>>  IMAGE GALLERY </a>
   </section>
 
 
@@ -147,8 +152,8 @@ if(!isset($_SESSION['start'])){
   <?php if($inTheEvent || ($_SESSION['id']) == $event['ownerId']){ ?>
     <section id="your-comment">
       <header>
-        <img src=<?=$_SESSION["imagePath"] ?>>
-        <h2> <?=$_SESSION['username']?> </h2>
+        <img src=<?=$currentUser["imagePath"] ?>>
+        <h2> <?=$currentUser['username']?> </h2>
       </header>
       <main>
         <h1> Comment here: </h1>

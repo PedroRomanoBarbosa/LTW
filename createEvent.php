@@ -33,7 +33,7 @@ if(!isset($_SESSION['start'])){
 		Create Event
 	</section>
 	<section id="create-event-area">
-		<form id="create-event-info" action="checkEventCreation.php" method="post">
+		<form id="create-event-info" action="checkEventCreation.php" method="post" enctype="multipart/form-data">
 			<div id="create-event-area-left">
 				<div id="create-event-name">
 					<strong>Event Name:</strong>
@@ -60,10 +60,11 @@ if(!isset($_SESSION['start'])){
 								<option selected="selected" disabled="disabled">----</option>
 								<?php
 									$monthList = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                  $index = 1;
 									foreach($monthList as $month){
 								?>
-									<option value=<?=$month?>><?=$month?></option>
-								<?php } ?>
+									<option value=<?=$index?>><?=$month?></option>
+								<?php $index++; } ?>
 							</select>
 						</div>
 						<div>
